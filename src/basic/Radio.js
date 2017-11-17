@@ -5,7 +5,7 @@ import { connectStyle } from "native-base-shoutem-theme";
 import Icon from "react-native-vector-icons/Ionicons";
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 import variable from "../theme/variables/platform";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 
 class Radio extends Component {
 	static contextTypes = {

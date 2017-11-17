@@ -4,7 +4,7 @@ import { TouchableOpacity, Platform, View, TouchableNativeFeedback } from "react
 import { connectStyle } from "native-base-shoutem-theme";
 import variable from "./../theme/variables/platform";
 import { Text } from "./Text";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 

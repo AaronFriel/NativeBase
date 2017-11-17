@@ -1,6 +1,6 @@
 Object.defineProperty(exports,"__esModule",{value:true});exports.Fab=undefined;var _jsxFileName="src/basic/Fab.js";var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require("react");var _react2=_interopRequireDefault(_react);
 var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_propTypes);
-var _computeProps=require("../Utils/computeProps");var _computeProps2=_interopRequireDefault(_computeProps);
+var _computeProps=require("../Utils/computeProps");
 
 var _reactNative=require("react-native");
 var _Icon=require("./Icon");
@@ -159,7 +159,7 @@ style:this.getInitialStyle().fab};
 var incomingProps=_lodash2.default.clone(this.props);
 delete incomingProps.onPress;
 
-return(0,_computeProps2.default)(incomingProps,defaultProps);
+return(0,_computeProps.computeProps)(incomingProps,defaultProps);
 }},{key:"getOtherButtonStyle",value:function getOtherButtonStyle(
 
 child,i){
@@ -180,7 +180,7 @@ delete inp.style;
 
 var defaultProps={};
 
-return(0,_computeProps2.default)(inp,defaultProps);
+return(0,_computeProps.computeProps)(inp,defaultProps);
 }},{key:"componentDidMount",value:function componentDidMount()
 
 {var _this2=this;

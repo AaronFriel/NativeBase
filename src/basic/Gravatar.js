@@ -5,7 +5,7 @@ import _ from "lodash";
 import md5 from "blueimp-md5";
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 import NativeBaseComponent from "./Base/NativeBaseComponent";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 
 const GRAVATAR_URI = "https://www.gravatar.com/avatar/";
 

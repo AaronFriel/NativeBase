@@ -18,7 +18,7 @@ import { Left } from "./Left";
 import { Right } from "./Right";
 import { Body } from "./Body";
 import { connectStyle } from "native-base-shoutem-theme";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 // import Button from './../Button';
 import { Platform, Animated, Dimensions, TouchableOpacity, TouchableNativeFeedback, View } from "react-native";
 import { Icon } from "./Icon";

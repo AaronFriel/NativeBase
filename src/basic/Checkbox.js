@@ -6,7 +6,7 @@ import { connectStyle } from "native-base-shoutem-theme";
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 import variable from "../theme/variables/platform";
 import _ from "lodash";
-import computeProps from "../Utils/computeProps";
+import { computeProps } from "../Utils/computeProps";
 
 class CheckBox extends Component {
 	static contextTypes = {
