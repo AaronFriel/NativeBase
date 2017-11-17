@@ -1,9 +1,9 @@
-"use_strict";
+"use_strict";Object.defineProperty(exports,"__esModule",{value:true});
 var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);
 var _ReactNativePropRegistry=require("react-native/Libraries/Renderer/shims/ReactNativePropRegistry");var _ReactNativePropRegistry2=_interopRequireDefault(_ReactNativePropRegistry);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 
-module.exports=function(incomingProps,defaultProps){
+function computeProps(incomingProps,defaultProps){
 
 var computedProps={};
 
@@ -41,5 +41,7 @@ _lodash2.default.merge(computedProps.style,defaultProps.style,computedPropsStyle
 }
 
 return computedProps;
-};
+};exports.default=
+
+computeProps;
 //# sourceMappingURL=computeProps.js.map
