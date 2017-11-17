@@ -381,7 +381,7 @@ active=this.props.active;
 return(
 _react2.default.createElement(_reactNative.Animated.View,{style:this.getContainerStyle(),__source:{fileName:_jsxFileName,lineNumber:382}},
 this.renderButtons(),
-_reactNative.Platform.OS==="ios"||_platform2.default.androidRipple===false||_reactNative.Platform["Version"]<=21?
+_reactNative.Platform.OS!=="android"||_platform2.default.androidRipple===false||_reactNative.Platform["Version"]<=21?
 _react2.default.createElement(_reactNative.TouchableOpacity,_extends({onPress:function onPress(){return _this5.fabOnPress();}},this.prepareFabProps(),{activeOpacity:1,__source:{fileName:_jsxFileName,lineNumber:385}}),
 this.renderFab()):
 

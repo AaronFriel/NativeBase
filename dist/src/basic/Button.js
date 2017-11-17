@@ -44,7 +44,7 @@ child&&child.type===_Text.Text?
 _react2.default.cloneElement(child,_extends({uppercase:true},child.props)):
 child);});
 
-if(_reactNative.Platform.OS==="ios"||variables.androidRipple===false||_reactNative.Platform["Version"]<=21){
+if(_reactNative.Platform.OS!=="android"||variables.androidRipple===false||_reactNative.Platform["Version"]<=21){
 return(
 _react2.default.createElement(_reactNative.TouchableOpacity,_extends({},
 this.prepareRootProps(),{

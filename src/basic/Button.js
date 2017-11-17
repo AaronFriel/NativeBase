@@ -44,7 +44,7 @@ class Button extends Component {
 								? React.cloneElement(child, { uppercase: true, ...child.props })
 								: child
 					);
-		if (Platform.OS === "ios" || variables.androidRipple === false || Platform["Version"] <= 21) {
+		if (Platform.OS !== "android" || variables.androidRipple === false || Platform["Version"] <= 21) {
 			return (
 				<TouchableOpacity
 					{...this.prepareRootProps()}

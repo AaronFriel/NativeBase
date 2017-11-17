@@ -381,7 +381,7 @@ class Fab extends Component {
 		return (
 			<Animated.View style={this.getContainerStyle()}>
 				{this.renderButtons()}
-				{Platform.OS === "ios" || variables.androidRipple === false || Platform["Version"] <= 21 ? (
+				{Platform.OS !== "android" || variables.androidRipple === false || Platform["Version"] <= 21 ? (
 					<TouchableOpacity onPress={() => this.fabOnPress()} {...this.prepareFabProps()} activeOpacity={1}>
 						{this.renderFab()}
 					</TouchableOpacity>
