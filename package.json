@@ -48,6 +48,8 @@
     "tween-functions": "^1.0.1"
   },
   "devDependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*",
     "babel-cli": "^6.18.0",
     "babel-eslint": "^6.1.2",
     "babel-jest": "^16.0.0",
@@ -64,7 +66,7 @@
     "react": "^16.0.0-alpha.3",
     "react-native": "^0.46.0",
     "react-native-vector-icons": "~4.4.2",
-    "react-test-renderer": "^15.3.2"
+    "react-test-renderer": "^15.3.2",
     "rimraf": "^2.6.2"
   },
   "gitHead": "5bbeacc403ba97622703699132c55d8359344004",
