@@ -212,7 +212,7 @@ var childrenArray=_react2.default.Children.toArray(this.props.children);
 
 var newChildren=[];
 
-childrenArray.slice(1).foreach(function(child,i){
+childrenArray.slice(1).forEach(function(child,i){
 newChildren.push(
 _react2.default.createElement(AnimatedFab,_extends({
 style:_this3.getOtherButtonStyle(child,i)},

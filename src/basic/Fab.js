@@ -212,7 +212,7 @@ class Fab extends Component {
 
 		const newChildren = [];
 
-		childrenArray.slice(1).foreach((child, i) => {
+		childrenArray.slice(1).forEach((child, i) => {
 			newChildren.push(
 				<AnimatedFab
 					style={this.getOtherButtonStyle(child, i)}
