@@ -20,9 +20,9 @@ return(0,_computeProps.computeProps)(this.props,defaultProps);
 }},{key:"render",value:function render()
 
 {var _this2=this;
-var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"].variables:_platform2.default;
-var platformStyle=variables.platformStyle;
-var platform=variables.platform;
+var variables=this.context.theme?
+this.context.theme['@@shoutem.theme/themeStyle'].variables:_platform2.default;
+
 
 return(
 _react2.default.createElement(_reactNative.TouchableOpacity,_extends({ref:function ref(c){return _this2._root=c;}},this.prepareRootProps(),{__source:{fileName:_jsxFileName,lineNumber:28}}),

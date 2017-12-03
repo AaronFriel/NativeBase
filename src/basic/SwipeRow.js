@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Animated, PanResponder, Platform, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Animated, PanResponder, View } from "react-native";
 import { connectStyle } from "native-base-shoutem-theme";
-import { Text } from "./Text";
 import { Left } from "./Left";
 import { Right } from "./Right";
 import { Body } from "./Body";
@@ -65,7 +63,11 @@ class SwipeRow extends Component {
 	}
 
 	getPreviewAnimation(toValue, delay) {
-		return Animated.timing(this._translateX, { duration: this.props.previewDuration, toValue, delay });
+		return Animated.timing(this._translateX, {
+			duration: this.props.previewDuration,
+			toValue,
+			delay
+		});
 	}
 
 	onContentLayout(e) {
@@ -77,8 +79,8 @@ class SwipeRow extends Component {
 
 		if (this.props.preview && !this.ranPreview) {
 			this.ranPreview = true;
-			let previewOpenValue = this.props.previewOpenValue || this.props.rightOpenValue * 0.5;
-			this.getPreviewAnimation(previewOpenValue, PREVIEW_OPEN_DELAY).start(_ => {
+			const previewOpenValue = this.props.previewOpenValue || this.props.rightOpenValue * 0.5;
+			this.getPreviewAnimation(previewOpenValue, PREVIEW_OPEN_DELAY).start((_) => {
 				this.getPreviewAnimation(0, PREVIEW_CLOSE_DELAY).start();
 			});
 		}
@@ -110,7 +112,9 @@ class SwipeRow extends Component {
 			if (this.parentScrollEnabled) {
 				// disable scrolling on the listView parent
 				this.parentScrollEnabled = false;
-				this.props.setScrollEnabled && this.props.setScrollEnabled(false);
+				if (this.props.setScrollEnabled) {
+					this.props.setScrollEnabled(false);
+				}
 			}
 
 			if (this.swipeInitialX === null) {
@@ -119,7 +123,9 @@ class SwipeRow extends Component {
 			}
 			if (!this.horizontalSwipeGestureBegan) {
 				this.horizontalSwipeGestureBegan = true;
-				this.props.swipeGestureBegan && this.props.swipeGestureBegan();
+				if (this.props.swipeGestureBegan) {
+					this.props.swipeGestureBegan();
+				}
 			}
 
 			let newDX = this.swipeInitialX + dx;
@@ -141,27 +147,25 @@ class SwipeRow extends Component {
 		}
 	}
 
-	handlePanResponderEnd(e, gestureState) {
+	handlePanResponderEnd(_e, _gestureState) {
 		// re-enable scrolling on listView parent
 		if (!this.parentScrollEnabled) {
 			this.parentScrollEnabled = true;
-			this.props.setScrollEnabled && this.props.setScrollEnabled(true);
+			if (this.props.setScrollEnabled) {
+				this.props.setScrollEnabled(true);
+			}
 		}
 
 		// finish up the animation
 		let toValue = 0;
-		if (this._translateX._value >= 0) {
-			// trying to open right
-			if (this._translateX._value > this.props.leftOpenValue * (this.props.swipeToOpenPercent / 100)) {
-				// we're more than halfway
-				toValue = this.props.leftOpenValue;
-			}
-		} else {
-			// trying to open left
-			if (this._translateX._value < this.props.rightOpenValue * (this.props.swipeToOpenPercent / 100)) {
-				// we're more than halfway
-				toValue = this.props.rightOpenValue;
-			}
+		const xTranslation = this._translateX._value;
+		const swipeThreshold = (this.props.swipeToOpenPercent / 100);
+		if (xTranslation >= 0 && xTranslation > this.props.leftOpenValue * swipeThreshold) {
+			// trying to open right && we're more than halfway
+			toValue = this.props.leftOpenValue;
+		} else if (xTranslation < this.props.rightOpenValue * swipeThreshold) {
+			// (trying to open left) we're more than halfway
+			toValue = this.props.rightOpenValue;
 		}
 
 		this.manuallySwipeRow(toValue);
@@ -179,18 +183,18 @@ class SwipeRow extends Component {
 			toValue,
 			friction: this.props.friction,
 			tension: this.props.tension,
-		}).start(_ => {
-			if (toValue === 0) {
-				this.props.onRowDidClose && this.props.onRowDidClose();
-			} else {
-				this.props.onRowDidOpen && this.props.onRowDidOpen();
+		}).start((_) => {
+			if (toValue === 0 && this.props.onRowDidClose) {
+				this.props.onRowDidClose();
+			} else if (this.props.onRowDidOpen) {
+				this.props.onRowDidOpen();
 			}
 		});
 
-		if (toValue === 0) {
-			this.props.onRowClose && this.props.onRowClose();
-		} else {
-			this.props.onRowOpen && this.props.onRowOpen(toValue);
+		if (toValue === 0 && this.props.onRowClose) {
+			this.props.onRowClose();
+		} else if (this.props.onRowOpen) {
+			this.props.onRowOpen(toValue);
 		}
 
 		// reset everything
@@ -249,7 +253,7 @@ class SwipeRow extends Component {
 						styles.hidden,
 						{
 							height: this.state.hiddenHeight,
-							flex:1,
+							flex: 1,
 							flexDirection: "row",
 							justifyContent: "space-between",
 						},

@@ -1,8 +1,6 @@
 import variable from "./../variables/platform";
 
-export default (variables = variable) => {
-	const platform = variables.platform;
-
+export default (_variables = variable) => {
 	const fabTheme = {
 		"NativeBase.Button": {
 			alignItems: "center",

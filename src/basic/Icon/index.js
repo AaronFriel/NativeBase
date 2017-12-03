@@ -7,7 +7,6 @@ import { connectStyle } from "native-base-shoutem-theme";
 import { IconNB } from "../IconNB";
 import ic from "./NBIcons.json";
 import variable from "./../../theme/variables/platform";
-import _ from "lodash";
 
 import mapPropsToStyleNames from "../../Utils/mapPropsToStyleNames";
 
@@ -27,9 +26,13 @@ class Icon extends Component {
 			} else if (typeof ic[this.props.name] === "object") {
 				let name;
 				if (platform === "ios" && platformStyle !== "material") {
-					name = this.props.active ? ic[this.props.name].ios.active : ic[this.props.name].ios.default;
+					name = this.props.active
+						? ic[this.props.name].ios.active
+						: ic[this.props.name].ios.default;
 				} else {
-					name = this.props.active ? ic[this.props.name].android.active : ic[this.props.name].android.default;
+					name = this.props.active
+						? ic[this.props.name].android.active
+						: ic[this.props.name].android.default;
 				}
 				return name;
 			}
@@ -43,12 +46,16 @@ class Icon extends Component {
 			if (this.props.ios) {
 				return this.props.ios;
 			} else {
-				return this.props.active ? ic[this.props.name].ios.active : ic[this.props.name].ios.default;
+				return this.props.active
+					? ic[this.props.name].ios.active
+					: ic[this.props.name].ios.default;
 			}
 		} else if (this.props.android) {
 			return this.props.android;
 		} else {
-			return this.props.active ? ic[this.props.name].android.active : ic[this.props.name].android.default;
+			return this.props.active
+				? ic[this.props.name].android.active
+				: ic[this.props.name].android.default;
 		}
 	}
 

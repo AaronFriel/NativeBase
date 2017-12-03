@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import createReactClass from "create-react-class";
-import { Picker, Modal, View, ListView } from "react-native";
-import { ViewPropTypes } from '../Utils';
+import { Picker, Modal, View } from "react-native";
+import { connectStyle } from "native-base-shoutem-theme";
 import _ from "lodash";
+import { ViewPropTypes } from '../Utils';
 import { Text } from "./Text";
 import { List } from "./List";
-import { IconNB as Icon } from "./IconNB";
 import { Radio } from "./Radio";
 import { Container } from "./Container";
 import { Content } from "./Content";
@@ -17,7 +17,6 @@ import { Title } from "./Title";
 import { Left } from "./Left";
 import { Right } from "./Right";
 import { Body } from "./Body";
-import { connectStyle } from "native-base-shoutem-theme";
 import { computeProps } from "../Utils/computeProps";
 
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
@@ -105,7 +104,7 @@ class PickerNB extends Component {
 					? <Text style={this.props.textStyle} note={this.props.note}>
 							{this.state.currentLabel}
 						</Text>
-					: <Text style={this.props.textStyle} note={this.props.note === false ? false : true}>
+					: <Text style={this.props.textStyle} note={this.props.note}>
 							{this.props.placeholder}
 						</Text>}
 				{this.props.iosIcon === undefined ? null : this.renderIcon()}

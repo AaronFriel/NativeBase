@@ -20,9 +20,9 @@ class Radio extends Component {
 	}
 
 	render() {
-		const variables = this.context.theme ? this.context.theme["@@shoutem.theme/themeStyle"].variables : variable;
-		const platformStyle = variables.platformStyle;
-		const platform = variables.platform;
+    const variables = this.context.theme
+      ? this.context.theme['@@shoutem.theme/themeStyle'].variables
+      : variable;
 
 		return (
 			<TouchableOpacity ref={c => (this._root = c)} {...this.prepareRootProps()}>
@@ -51,7 +51,7 @@ class Radio extends Component {
 									? this.props.selected ? "ios-radio-button-on" : "ios-radio-button-off"
 									: this.props.selected ? "md-radio-button-on" : "md-radio-button-off"
 							}
-						/>}
+					/>}
 			</TouchableOpacity>
 		);
 	}

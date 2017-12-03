@@ -1,3 +1,3 @@
-import ViewPropTypes from './viewPropTypes'
+import ViewPropTypes from './viewPropTypes';
 
-export { ViewPropTypes }
+export { ViewPropTypes };

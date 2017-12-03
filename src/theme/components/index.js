@@ -222,8 +222,10 @@ export default (variables = variable) => {
       ) {
         if (grandparent) {
           if (!grandparent[styleName]) {
+            // eslint-disable-next-line no-param-reassign
             grandparent[styleName] = {};
           } else {
+            // eslint-disable-next-line no-param-reassign
             grandparent[styleName][parentKey] = style;
           }
         }

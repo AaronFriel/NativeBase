@@ -64,6 +64,7 @@ class IconNB extends Component {
 }
 
 IconNB.propTypes = {
+	// eslint-disable-next-line react/no-unused-prop-types
 	style: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
 };
 

@@ -15,13 +15,13 @@ class Text extends Component {
 
     let text;
     if (uppercase) {
-      text = React.Children.map(children, child => {
+      text = React.Children.map(children, (child) => {
         if (_.isString(child)) {
           return _.toUpper(child);
         } else {
           return child;
         }
-      })
+      });
     } else {
       text = children;
     }

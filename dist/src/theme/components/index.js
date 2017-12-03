@@ -222,8 +222,10 @@ parentKey.indexOf(".")===0)
 {
 if(grandparent){
 if(!grandparent[styleName]){
+
 grandparent[styleName]={};
 }else{
+
 grandparent[styleName][parentKey]=style;
 }
 }

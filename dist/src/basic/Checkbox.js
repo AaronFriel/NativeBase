@@ -5,7 +5,6 @@ var _Ionicons=require("react-native-vector-icons/Ionicons");var _Ionicons2=_inte
 var _nativeBaseShoutemTheme=require("native-base-shoutem-theme");
 var _mapPropsToStyleNames=require("../Utils/mapPropsToStyleNames");var _mapPropsToStyleNames2=_interopRequireDefault(_mapPropsToStyleNames);
 var _platform=require("../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);
-var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);
 var _computeProps=require("../Utils/computeProps");function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 CheckBox=function(_Component){_inherits(CheckBox,_Component);function CheckBox(){_classCallCheck(this,CheckBox);return _possibleConstructorReturn(this,(CheckBox.__proto__||Object.getPrototypeOf(CheckBox)).apply(this,arguments));}_createClass(CheckBox,[{key:"getInitialStyle",value:function getInitialStyle(
@@ -14,13 +13,12 @@ CheckBox=function(_Component){_inherits(CheckBox,_Component);function CheckBox()
 
 
 variables){
+var bgColor=this.props.color?this.props.color:variables.checkboxBgColor;
+
 return{
 checkStyle:{
 borderColor:this.props.color?this.props.color:variables.checkboxBgColor,
-backgroundColor:
-this.props.checked===true?
-this.props.color?this.props.color:variables.checkboxBgColor:
-"transparent"}};
+backgroundColor:this.props.checked===true?bgColor:"transparent"}};
 
 
 }},{key:"prepareRootProps",value:function prepareRootProps(
@@ -37,14 +35,14 @@ var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"
 var platformStyle=variables.platformStyle;
 var platform=variables.platform;
 return(
-_react2.default.createElement(_reactNative.TouchableOpacity,_extends({ref:function ref(c){return _this2._root=c;}},this.prepareRootProps(variables),{__source:{fileName:_jsxFileName,lineNumber:40}}),
+_react2.default.createElement(_reactNative.TouchableOpacity,_extends({ref:function ref(c){return _this2._root=c;}},this.prepareRootProps(variables),{__source:{fileName:_jsxFileName,lineNumber:38}}),
 _react2.default.createElement(_Ionicons2.default,{
 style:{
 color:this.props.checked===true?variables.checkboxTickColor:"transparent",
 fontSize:variables.CheckboxFontSize,
 lineHeight:variables.CheckboxIconSize},
 
-name:platform==="ios"&&platformStyle!=="material"?"ios-checkmark-outline":"md-checkmark",__source:{fileName:_jsxFileName,lineNumber:41}})));
+name:platform==="ios"&&platformStyle!=="material"?"ios-checkmark-outline":"md-checkmark",__source:{fileName:_jsxFileName,lineNumber:39}})));
 
 
 

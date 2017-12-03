@@ -64,6 +64,7 @@ return _react2.default.createElement(this.Icon,_extends({ref:function ref(c){ret
 
 
 IconNB.propTypes={
+
 style:_propTypes2.default.oneOfType([_propTypes2.default.object,_propTypes2.default.number,_propTypes2.default.array])};
 
 

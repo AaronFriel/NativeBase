@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { TextInput } from "react-native";
 import { connectStyle } from "native-base-shoutem-theme";
@@ -10,14 +10,16 @@ class Input extends NativeBaseComponent {
 	render() {
 		return (
 			<TextInput
-				ref={c => {
+				ref={(c) => {
 					this._textInput = c;
 					this._root = c;
 				}}
-				editable={this.props.disabled ? false : true}
+				editable={this.props.disabled}
 				{...this.props}
 				placeholderTextColor={
-					this.props.placeholderTextColor ? this.props.placeholderTextColor : variables.inputColorPlaceholder
+					this.props.placeholderTextColor
+						? this.props.placeholderTextColor
+						: variables.inputColorPlaceholder
 				}
 				underlineColorAndroid="rgba(0,0,0,0)"
 			/>

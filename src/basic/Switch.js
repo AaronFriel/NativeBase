@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Switch as SwitchNB } from "react-native";
 
 import { connectStyle } from "native-base-shoutem-theme";

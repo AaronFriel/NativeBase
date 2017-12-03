@@ -1,16 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import createReactClass from "create-react-class";
-const ReactNative = require("react-native");
-import { connectStyle, StyleProvider } from "native-base-shoutem-theme";
+import { Animated } from "react-native";
+import { connectStyle } from "native-base-shoutem-theme";
+import _ from "lodash";
+
 import mapPropsToStyleNames from "../../Utils/mapPropsToStyleNames";
 import variable from "./../../theme/variables/platform";
 import { TabHeading, Text, TabContainer } from "./../../index";
-import _ from "lodash";
-
-const { StyleSheet, View, Animated, Platform } = ReactNative;
 import { ViewPropTypes } from "../../Utils";
-const Button = require("./Button");
+import Button from "../Button";
 
 const DefaultTabBar = createReactClass({
   propTypes: {
@@ -37,7 +36,7 @@ const DefaultTabBar = createReactClass({
     };
   },
 
-  renderTabOption(name, page) {},
+  renderTabOption(_name, _page) {},
 
   renderTab(
     name,
@@ -51,9 +50,6 @@ const DefaultTabBar = createReactClass({
     tabHeaderStyle
   ) {
     const headerContent = typeof name !== "string" ? name.props.children : undefined;
-    const { activeTextColor, inactiveTextColor } = this.props;
-    const textColor = isTabActive ? activeTextColor : inactiveTextColor;
-    const fontWeight = isTabActive ? "bold" : "normal";
     if (typeof name === "string") {
       return (
         <Button style={{ flex: 1 }} key={name} onPress={() => onPressHandler(page)}>
@@ -77,7 +73,6 @@ const DefaultTabBar = createReactClass({
     const variables = this.context.theme
       ? this.context.theme["@@shoutem.theme/themeStyle"].variables
       : variable;
-    const platformStyle = variables.platformStyle;
     const containerWidth = this.props.containerWidth;
     const numberOfTabs = this.props.tabs.length;
     const tabUnderlineStyle = {

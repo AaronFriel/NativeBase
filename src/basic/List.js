@@ -24,8 +24,8 @@ class List extends Component {
 		this._rows = {};
 		this.openCellId = null;
 		if (props.dataArray && props.renderRow) {
-			let rowHasChanged = props.rowHasChanged || ((r1, r2) => r1 !== r2);
-			const ds = new ListView.DataSource({ rowHasChanged: rowHasChanged });
+			const rowHasChanged = props.rowHasChanged || ((r1, r2) => r1 !== r2);
+			const ds = new ListView.DataSource({ rowHasChanged });
 			this.state = {
 				dataSource: ds.cloneWithRows(props.dataArray),
 			};
@@ -68,10 +68,12 @@ class List extends Component {
 			this.safeCloseOpenRow();
 		}
 		this.openCellId = cellIdentifier;
-		this.props.onRowOpen && this.props.onRowOpen(secId, rowId, rowMap);
+		if (this.props.onRowOpen) {
+			this.props.onRowOpen(secId, rowId, rowMap);
+		}
 	}
 
-	onRowPress(id) {
+	onRowPress(_id) {
 		if (this.openCellId) {
 			if (this.props.closeOnRowPress) {
 				this.safeCloseOpenRow();
@@ -79,7 +81,7 @@ class List extends Component {
 			}
 		}
 	}
-	closeRow(id) {
+	closeRow(_id) {
 		if (this.openCellId) {
 			if (this.props.closeOnRowPress) {
 				this.safeCloseOpenRow();
@@ -95,26 +97,40 @@ class List extends Component {
 				this.openCellId = null;
 			}
 		}
-		this.props.onScroll && this.props.onScroll(e);
+		if (this.props.onScroll) {
+			this.props.onScroll(e);
+		}
 	}
 
 	setRefs(ref) {
 		this._listView = ref;
-		this.props.listViewRef && this.props.listViewRef(ref);
+		if (this.props.listViewRef) {
+			this.props.listViewRef(ref);
+		}
 	}
 
-	renderRow(rowData, secId, rowId, rowMap) {
+	renderRow(rowData, secId, rowId, _rowMap) {
 		const previewRowId =
-			this.props.dataSource && this.props.dataSource.getRowIDForFlatIndex(this.props.previewRowIndex || 0);
+			this.props.dataSource
+			&& this.props.dataSource.getRowIDForFlatIndex(this.props.previewRowIndex || 0);
 		return (
 			<SwipeRow
-				list={true}
+				list
 				ref={row => (this._rows[`${secId}${rowId}`] = row)}
 				swipeGestureBegan={_ => this.rowSwipeGestureBegan(`${secId}${rowId}`)}
 				onRowOpen={_ => this.onRowOpen(secId, rowId, this._rows)}
-				onRowDidOpen={_ => this.props.onRowDidOpen && this.props.onRowDidOpen(secId, rowId, this._rows)}
-				onRowClose={_ => this.props.onRowClose && this.props.onRowClose(secId, rowId, this._rows)}
-				onRowDidClose={_ => this.props.onRowDidClose && this.props.onRowDidClose(secId, rowId, this._rows)}
+        onRowDidOpen={_ =>
+          this.props.onRowDidOpen &&
+          this.props.onRowDidOpen(secId, rowId, this._rows)
+        }
+        onRowClose={_ =>
+          this.props.onRowClose &&
+          this.props.onRowClose(secId, rowId, this._rows)
+        }
+        onRowDidClose={_ =>
+          this.props.onRowDidClose &&
+          this.props.onRowDidClose(secId, rowId, this._rows)
+        }
 				onRowPress={_ => this.onRowPress(`${secId}${rowId}`)}
 				closeRow={_ => this.closeRow(`${secId}${rowId}`)}
 				setScrollEnabled={enable => this.setScrollEnabled(enable)}
@@ -127,7 +143,10 @@ class List extends Component {
 				stopRightSwipe={this.props.stopRightSwipe}
 				recalculateHiddenLayout={this.props.recalculateHiddenLayout}
 				style={this.props.swipeRowStyle}
-				preview={(this.props.previewFirstRow || this.props.previewRowIndex) && rowId === previewRowId}
+				preview={
+					(this.props.previewFirstRow || this.props.previewRowIndex) &&
+					rowId === previewRowId
+				}
 				previewDuration={this.props.previewDuration}
 				previewOpenValue={this.props.previewOpenValue}
 				tension={this.props.tension}
@@ -145,7 +164,7 @@ class List extends Component {
 			return (
 				<ListView
 					{...this.props}
-					ref={ref => {
+					ref={(ref) => {
 						this.setRefs(ref);
 						this._root = ref;
 					}}

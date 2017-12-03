@@ -143,7 +143,7 @@ class DeckSwiper extends Component {
 			onMoveShouldSetResponderCapture: () => true,
 			onMoveShouldSetPanResponderCapture: (evt, gestureState) => Math.abs(gestureState.dx) > 5,
 
-			onPanResponderGrant: (e, gestureState) => {
+			onPanResponderGrant: (_e, _gestureState) => {
 				this.state.pan.setOffset({
 					x: this.state.pan.x._value,
 					y: this.state.pan.y._value,
@@ -158,7 +158,6 @@ class DeckSwiper extends Component {
 					if (this.props.onSwiping) this.props.onSwiping("left", gestureState.dx);
 				}
 				let val = Math.abs(gestureState.dx * 0.0013);
-				const opa = Math.abs(gestureState.dx * 0.0022);
 				if (val > 0.2) {
 					val = 0.2;
 				}
@@ -182,10 +181,14 @@ class DeckSwiper extends Component {
 
 				if (Math.abs(this.state.pan.x._value) > SWIPE_THRESHOLD) {
 					if (velocity > 0) {
-						this.props.onSwipeRight ? this.props.onSwipeRight(this.state.selectedItem) : undefined;
+						if (this.props.onSwipeRight) {
+							this.props.onSwipeRight(this.state.selectedItem);
+						}
 						this.selectNext();
 					} else {
-						this.props.onSwipeLeft ? this.props.onSwipeLeft(this.state.selectedItem) : undefined;
+						if (this.props.onSwipeLeft) {
+							this.props.onSwipeLeft(this.state.selectedItem);
+						}
 						this.selectNext();
 					}
 
@@ -215,10 +218,9 @@ class DeckSwiper extends Component {
 	}
 
 	getCardStyles() {
-		const { pan, pan2, enter } = this.state;
+		const { pan, enter } = this.state;
 
 		const [translateX, translateY] = [pan.x, pan.y];
-		// let [translateX, translateY] = [pan2.x, pan2.y];
 
 		const rotate = pan.x.interpolate({
 			inputRange: [-700, 0, 700],

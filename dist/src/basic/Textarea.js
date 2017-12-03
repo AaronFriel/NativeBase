@@ -31,7 +31,9 @@ _this2._root=c;
 this.prepareRootProps(),{
 multiline:true,
 placeholderTextColor:
-this.props.placeholderTextColor?this.props.placeholderTextColor:_platform2.default.inputColorPlaceholder,
+this.props.placeholderTextColor?
+this.props.placeholderTextColor:
+_platform2.default.inputColorPlaceholder,
 
 underlineColorAndroid:"rgba(0,0,0,0)",__source:{fileName:_jsxFileName,lineNumber:26}})));
 

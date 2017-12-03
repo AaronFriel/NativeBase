@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { View } from "react-native";
-import { ViewPropTypes } from '../Utils';
 import PropTypes from "prop-types";
 import { connectStyle } from "native-base-shoutem-theme";
+import { ViewPropTypes } from '../Utils';
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 import { ToastContainer as Toast } from "./ToastContainer";
 import { ActionSheetContainer as ActionSheet } from "./Actionsheet";
-import { Text } from "./Text";
 
 class Root extends Component {
 	render() {
@@ -14,12 +13,12 @@ class Root extends Component {
 			<View ref={c => (this._root = c)} {...this.props} style={{ flex: 1 }}>
 				{this.props.children}
 				<Toast
-					ref={c => {
+					ref={(c) => {
 						if (!Toast.toastInstance) Toast.toastInstance = c;
 					}}
 				/>
 				<ActionSheet
-					ref={c => {
+					ref={(c) => {
 						if (!ActionSheet.actionsheetInstance) ActionSheet.actionsheetInstance = c;
 					}}
 				/>

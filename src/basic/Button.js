@@ -33,18 +33,20 @@ class Button extends Component {
 		return computeProps(this.props, defaultProps);
 	}
 	render() {
-		const variables = this.context.theme ? this.context.theme["@@shoutem.theme/themeStyle"].variables : variable;
+		const variables = this.context.theme
+			? this.context.theme["@@shoutem.theme/themeStyle"].variables
+			: variable;
 		const children =
 			Platform.OS === "ios"
 				? this.props.children
 				: React.Children.map(
 						this.props.children,
 						child =>
-							child && child.type === Text
+							(child && child.type === Text
 								? React.cloneElement(child, { uppercase: true, ...child.props })
-								: child
+								: child)
 					);
-		if (Platform.OS !== "android" || variables.androidRipple === false || Platform["Version"] <= 21) {
+		if (Platform.OS !== "android" || variables.androidRipple === false || Platform.Version <= 21) {
 			return (
 				<TouchableOpacity
 					{...this.prepareRootProps()}

@@ -143,7 +143,7 @@ this._panResponder=_reactNative.PanResponder.create({
 onMoveShouldSetResponderCapture:function onMoveShouldSetResponderCapture(){return true;},
 onMoveShouldSetPanResponderCapture:function onMoveShouldSetPanResponderCapture(evt,gestureState){return Math.abs(gestureState.dx)>5;},
 
-onPanResponderGrant:function onPanResponderGrant(e,gestureState){
+onPanResponderGrant:function onPanResponderGrant(_e,_gestureState){
 _this5.state.pan.setOffset({
 x:_this5.state.pan.x._value,
 y:_this5.state.pan.y._value});
@@ -158,7 +158,6 @@ if(_this5.props.onSwiping)_this5.props.onSwiping("right",gestureState.dx);
 if(_this5.props.onSwiping)_this5.props.onSwiping("left",gestureState.dx);
 }
 var val=Math.abs(gestureState.dx*0.0013);
-var opa=Math.abs(gestureState.dx*0.0022);
 if(val>0.2){
 val=0.2;
 }
@@ -182,10 +181,14 @@ velocity=(0,_clamp2.default)(vx*-1,4.5,10)*-1;
 
 if(Math.abs(_this5.state.pan.x._value)>SWIPE_THRESHOLD){
 if(velocity>0){
-_this5.props.onSwipeRight?_this5.props.onSwipeRight(_this5.state.selectedItem):undefined;
+if(_this5.props.onSwipeRight){
+_this5.props.onSwipeRight(_this5.state.selectedItem);
+}
 _this5.selectNext();
 }else{
-_this5.props.onSwipeLeft?_this5.props.onSwipeLeft(_this5.state.selectedItem):undefined;
+if(_this5.props.onSwipeLeft){
+_this5.props.onSwipeLeft(_this5.state.selectedItem);
+}
 _this5.selectNext();
 }
 
@@ -215,10 +218,9 @@ if(this.props.onSwiping)this.props.onSwiping(null);
 }},{key:"getCardStyles",value:function getCardStyles()
 
 {var _state=
-this.state,pan=_state.pan,pan2=_state.pan2,enter=_state.enter;var _ref3=
+this.state,pan=_state.pan,enter=_state.enter;var _ref3=
 
 [pan.x,pan.y],translateX=_ref3[0],translateY=_ref3[1];
-
 
 var rotate=pan.x.interpolate({
 inputRange:[-700,0,700],
@@ -244,9 +246,9 @@ return[animatedCardStyles,animatedCardStyles2];
 if(this.state.disabled){
 
 return(
-_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:247}},
+_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:249}},
 
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:249}},
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:251}},
 this.props.renderEmpty&&this.props.renderEmpty())));
 
 
@@ -255,23 +257,23 @@ this.props.renderEmpty&&this.props.renderEmpty())));
 }else if(this.state.lastCard){
 
 return(
-_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:258}},
+_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:260}},
 this.state.selectedItem===undefined?
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:260}}):
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:261}},
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:262}}):
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:263}},
 _react2.default.createElement(_reactNative.Animated.View,_extends({
 style:[
 this.getCardStyles()[1],
 this.getInitialStyle().topCard,
 {opacity:this.state.fadeAnim}]},
 
-this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:262}}),
+this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:264}}),
 
 this.props.renderEmpty&&this.props.renderEmpty()),
 
 _react2.default.createElement(_reactNative.Animated.View,_extends({
 style:[this.getCardStyles()[0],this.getInitialStyle().topCard]},
-this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:272}}),
+this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:274}}),
 
 this.props.renderItem(this.state.selectedItem)))));
 
@@ -280,17 +282,17 @@ this.props.renderItem(this.state.selectedItem)))));
 
 }
 return(
-_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:283}},
+_react2.default.createElement(_reactNative.View,{style:{position:"relative",flexDirection:"column"},__source:{fileName:_jsxFileName,lineNumber:285}},
 this.state.selectedItem===undefined?
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:285}}):
-_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:286}},
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:287}}):
+_react2.default.createElement(_reactNative.View,{__source:{fileName:_jsxFileName,lineNumber:288}},
 _react2.default.createElement(_reactNative.Animated.View,_extends({
 style:[
 this.getCardStyles()[1],
 this.getInitialStyle().topCard,
 {opacity:this.state.fadeAnim}]},
 
-this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:287}}),
+this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:289}}),
 
 this.props.renderBottom?
 this.props.renderBottom(this.state.selectedItem2):
@@ -298,7 +300,7 @@ this.props.renderItem(this.state.selectedItem2)),
 
 _react2.default.createElement(_reactNative.Animated.View,_extends({
 style:[this.getCardStyles()[0],this.getInitialStyle().topCard]},
-this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:299}}),
+this._panResponder.panHandlers,{__source:{fileName:_jsxFileName,lineNumber:301}}),
 
 this.props.renderTop?
 this.props.renderTop(this.state.selectedItem):

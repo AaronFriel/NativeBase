@@ -7,10 +7,13 @@ computeProps=computeProps;var _lodash=require("lodash");var _lodash2=_interopReq
 
 var computedProps={};
 
+
 incomingProps=_lodash2.default.clone(incomingProps);
+
 delete incomingProps.children;
 
 var incomingPropsStyle=incomingProps.style;
+
 delete incomingProps.style;
 
 
@@ -41,5 +44,5 @@ _lodash2.default.merge(computedProps.style,defaultProps.style,computedPropsStyle
 }
 
 return computedProps;
-};
+}
 //# sourceMappingURL=computeProps.js.map

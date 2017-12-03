@@ -1,7 +1,7 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _jsxFileName="src/basic/Tabs/index.js";
-
+Object.defineProperty(exports,"__esModule",{value:true});var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _jsxFileName="src/basic/Tabs/index.js";var _react=require("react");var _react2=_interopRequireDefault(_react);
 var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_propTypes);
 var _createReactClass=require("create-react-class");var _createReactClass2=_interopRequireDefault(_createReactClass);
+var _reactNative=require("react-native");
 
 
 
@@ -10,17 +10,15 @@ var _createReactClass=require("create-react-class");var _createReactClass2=_inte
 
 
 
-
+var _reactTimerMixin=require("react-timer-mixin");var _reactTimerMixin2=_interopRequireDefault(_reactTimerMixin);
+var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);
 
 var _Utils=require("../../Utils");
+var _SceneComponent=require("./SceneComponent");var _SceneComponent2=_interopRequireDefault(_SceneComponent);
+var _DefaultTabBar=require("./DefaultTabBar");
+var _ScrollableTabBar=require("./ScrollableTabBar");function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}
 
-var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}var React=require("react");var Component=React.Component;var ReactNative=require("react-native");var Dimensions=ReactNative.Dimensions,View=ReactNative.View,Animated=ReactNative.Animated,ScrollView=ReactNative.ScrollView,StyleSheet=ReactNative.StyleSheet,InteractionManager=ReactNative.InteractionManager,Platform=ReactNative.Platform;var TimerMixin=require("react-timer-mixin");
-
-var SceneComponent=require("./SceneComponent");var _require=
-require("./DefaultTabBar"),DefaultTabBar=_require.DefaultTabBar;var _require2=
-require("./ScrollableTabBar"),ScrollableTabBar=_require2.ScrollableTabBar;
-
-var styles=StyleSheet.create({
+var styles=_reactNative.StyleSheet.create({
 container:{
 flex:1},
 
@@ -30,10 +28,10 @@ flex:1}});
 
 
 var ScrollableTabView=(0,_createReactClass2.default)({displayName:"ScrollableTabView",
-mixins:[TimerMixin],
+mixins:[_reactTimerMixin2.default],
 statics:{
-DefaultTabBar:DefaultTabBar,
-ScrollableTabBar:ScrollableTabBar},
+DefaultTabBar:_DefaultTabBar.DefaultTabBar,
+ScrollableTabBar:_ScrollableTabBar.ScrollableTabBar},
 
 
 propTypes:{
@@ -67,21 +65,21 @@ prerenderingSiblingsNumber:0};
 getInitialState:function getInitialState(){
 return{
 currentPage:this.props.initialPage,
-scrollValue:new Animated.Value(this.props.initialPage),
-containerWidth:Dimensions.get("window").width,
+scrollValue:new _reactNative.Animated.Value(this.props.initialPage),
+containerWidth:_reactNative.Dimensions.get("window").width,
 sceneKeys:this.newSceneKeys({currentPage:this.props.initialPage})};
 
 },
 
 componentDidMount:function componentDidMount(){var _this=this;
 var scrollFn=function scrollFn(){
-if(_this.scrollView&&Platform.OS==="android"){
+if(_this.scrollView&&_reactNative.Platform.OS==="android"){
 var x=_this.props.initialPage*_this.state.containerWidth;
 _this.scrollView.scrollTo({x:x,animated:false});
 }
 };
 this.setTimeout(function(){
-InteractionManager.runAfterInteractions(scrollFn);
+_reactNative.InteractionManager.runAfterInteractions(scrollFn);
 },0);
 },
 
@@ -119,9 +117,9 @@ renderTabBar:function renderTabBar(props){
 if(this.props.renderTabBar===false){
 return null;
 }else if(this.props.renderTabBar){
-return React.cloneElement(this.props.renderTabBar(props),props);
+return _react2.default.cloneElement(this.props.renderTabBar(props),props);
 }else{
-return React.createElement(DefaultTabBar,_extends({},props,{__source:{fileName:_jsxFileName,lineNumber:124}}));
+return _react2.default.createElement(_DefaultTabBar.DefaultTabBar,_extends({},props,{__source:{fileName:_jsxFileName,lineNumber:122}}));
 }
 },
 
@@ -161,7 +159,7 @@ return child.props.heading+"_"+idx;
 renderScrollableContent:function renderScrollableContent(){var _this3=this;
 var scenes=this._composeScenes();
 return(
-React.createElement(ScrollView,_extends({
+_react2.default.createElement(_reactNative.ScrollView,_extends({
 horizontal:true,
 pagingEnabled:true,
 automaticallyAdjustContentInsets:false,
@@ -184,7 +182,7 @@ scrollEnabled:!this.props.locked,
 directionalLockEnabled:true,
 alwaysBounceVertical:false,
 keyboardDismissMode:"on-drag"},
-this.props.contentProps,{__source:{fileName:_jsxFileName,lineNumber:164}}),
+this.props.contentProps,{__source:{fileName:_jsxFileName,lineNumber:162}}),
 
 scenes));
 
@@ -195,15 +193,15 @@ _composeScenes:function _composeScenes(){var _this4=this;
 return this._children().map(function(child,idx){
 var key=_this4._makeSceneKey(child,idx);
 return(
-React.createElement(SceneComponent,{
+_react2.default.createElement(_SceneComponent2.default,{
 key:child.key,
 shouldUpdated:_this4._shouldRenderSceneKey(idx,_this4.state.currentPage),
-style:{width:_this4.state.containerWidth},__source:{fileName:_jsxFileName,lineNumber:198}},
+style:{width:_this4.state.containerWidth},__source:{fileName:_jsxFileName,lineNumber:196}},
 
 _this4._keyExists(_this4.state.sceneKeys,key)?
 child:
 
-React.createElement(View,{heading:child.props.heading,__source:{fileName:_jsxFileName,lineNumber:206}})));
+_react2.default.createElement(_reactNative.View,{heading:child.props.heading,__source:{fileName:_jsxFileName,lineNumber:204}})));
 
 
 
@@ -256,7 +254,7 @@ _this5.goToPage(_this5.state.currentPage);
 },
 
 _children:function _children(){var children=arguments.length>0&&arguments[0]!==undefined?arguments[0]:this.props.children;
-return React.Children.map(children,function(child){return child;});
+return _react2.default.Children.map(children,function(child){return child;});
 },
 
 render:function render(){
@@ -305,7 +303,7 @@ this.props.tabBarPosition==="overlayTop"?"top":"bottom",0);
 }
 
 return(
-React.createElement(View,{style:[styles.container,this.props.style],onLayout:this._handleLayout,__source:{fileName:_jsxFileName,lineNumber:308}},
+_react2.default.createElement(_reactNative.View,{style:[styles.container,this.props.style],onLayout:this._handleLayout,__source:{fileName:_jsxFileName,lineNumber:306}},
 this.props.tabBarPosition==="top"&&this.renderTabBar(tabBarProps),
 this.renderScrollableContent(),
 (this.props.tabBarPosition==="bottom"||overlayTabs)&&this.renderTabBar(tabBarProps)));

@@ -33,7 +33,9 @@ style:this.getInitialStyle().borderedBtn};
 return(0,_computeProps.computeProps)(this.props,defaultProps);
 }},{key:"render",value:function render()
 {var _this2=this;
-var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"].variables:_platform2.default;
+var variables=this.context.theme?
+this.context.theme["@@shoutem.theme/themeStyle"].variables:_platform2.default;
+
 var children=
 _reactNative.Platform.OS==="ios"?
 this.props.children:
@@ -44,12 +46,12 @@ child&&child.type===_Text.Text?
 _react2.default.cloneElement(child,_extends({uppercase:true},child.props)):
 child);});
 
-if(_reactNative.Platform.OS!=="android"||variables.androidRipple===false||_reactNative.Platform["Version"]<=21){
+if(_reactNative.Platform.OS!=="android"||variables.androidRipple===false||_reactNative.Platform.Version<=21){
 return(
 _react2.default.createElement(_reactNative.TouchableOpacity,_extends({},
 this.prepareRootProps(),{
 ref:function ref(c){return _this2._root=c;},
-activeOpacity:this.props.activeOpacity>0?this.props.activeOpacity:0.5,__source:{fileName:_jsxFileName,lineNumber:49}}),
+activeOpacity:this.props.activeOpacity>0?this.props.activeOpacity:0.5,__source:{fileName:_jsxFileName,lineNumber:51}}),
 
 children));
 
@@ -64,9 +66,9 @@ this.props.androidRippleColor?
 _reactNative.TouchableNativeFeedback.Ripple(this.props.androidRippleColor):
 _reactNative.TouchableNativeFeedback.Ripple(variables.androidRippleColor)},
 
-this.prepareRootProps(),{__source:{fileName:_jsxFileName,lineNumber:59}}),
+this.prepareRootProps(),{__source:{fileName:_jsxFileName,lineNumber:61}}),
 
-_react2.default.createElement(_reactNative.View,_extends({},this.prepareRootProps(),{__source:{fileName:_jsxFileName,lineNumber:69}}),
+_react2.default.createElement(_reactNative.View,_extends({},this.prepareRootProps(),{__source:{fileName:_jsxFileName,lineNumber:71}}),
 children)));
 
 

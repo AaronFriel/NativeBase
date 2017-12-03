@@ -24,14 +24,16 @@ class Textarea extends Component {
 	render() {
 		return (
 			<TextInput
-				ref={c => {
+				ref={(c) => {
 					this._textInput = c;
 					this._root = c;
 				}}
 				{...this.prepareRootProps()}
 				multiline
 				placeholderTextColor={
-					this.props.placeholderTextColor ? this.props.placeholderTextColor : variables.inputColorPlaceholder
+					this.props.placeholderTextColor
+						? this.props.placeholderTextColor
+						: variables.inputColorPlaceholder
 				}
 				underlineColorAndroid="rgba(0,0,0,0)"
 			/>

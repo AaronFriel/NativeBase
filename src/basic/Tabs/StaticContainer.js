@@ -1,12 +1,13 @@
-var React = require("react");
+import React from 'react';
 
 class StaticContainer extends React.Component {
+  // eslint-disable-next-line class-methods-use-this
   shouldComponentUpdate(nextProps) {
     return !!nextProps.shouldUpdate;
   }
 
   render() {
-    var child = this.props.children;
+    const child = this.props.children;
     if (child === null || child === false) {
       return null;
     }
@@ -15,4 +16,4 @@ class StaticContainer extends React.Component {
 }
 
 module.exports = StaticContainer;
-//export default StaticContainer;
+// export default StaticContainer;

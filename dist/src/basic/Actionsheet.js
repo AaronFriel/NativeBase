@@ -3,8 +3,6 @@ var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_pro
 var _reactNative=require("react-native");
 var _nativeBaseShoutemTheme=require("native-base-shoutem-theme");
 var _Text=require("./Text");
-var _Button=require("./Button");
-var _View=require("./View");
 var _Icon=require("./Icon");
 var _Left=require("./Left");
 var _Right=require("./Right");
@@ -28,11 +26,10 @@ items:[]};return _this;
 
 config,callback){
 if(_reactNative.Platform.OS==="ios"){
-if(typeof config.options[0]=="object"){
+if(typeof config.options[0]==="object"){
 var options=config.options;
-var filtered=options.map(function(item){
-return item.text;
-});
+var filtered=options.map(function(item){return item.text;});
+
 config.options=filtered;
 _reactNative.ActionSheetIOS.showActionSheetWithOptions(config,callback);
 }else{
@@ -54,28 +51,80 @@ callback:callback});
 if(!this.props.autoHide&&this.props.duration){
 console.warn("It's not recommended to set autoHide false with duration");
 }
+}},{key:"renderRowText",value:function renderRowText(
+
+data,i,id){var _this2=this;
+return(
+_react2.default.createElement(_ListItem.ListItem,{
+onPress:function onPress(){
+_this2.state.callback(id);
+_this2.setState({modalVisible:false});
+},
+style:{borderColor:"transparent"},__source:{fileName:_jsxFileName,lineNumber:58}},
+
+_react2.default.createElement(_Text.Text,{__source:{fileName:_jsxFileName,lineNumber:65}},
+data)));
+
+
+
+}},{key:"renderRowObject",value:function renderRowObject(
+
+data,i,id){var _this3=this;
+return(
+_react2.default.createElement(_ListItem.ListItem,{
+onPress:function onPress(){
+_this3.state.callback(id);
+_this3.setState({modalVisible:false});
+},
+style:{borderColor:"transparent"},
+icon:true,__source:{fileName:_jsxFileName,lineNumber:74}},
+
+_react2.default.createElement(_Left.Left,{__source:{fileName:_jsxFileName,lineNumber:82}},
+_react2.default.createElement(_Icon.Icon,{
+name:data.icon,
+style:{
+color:data.iconColor},__source:{fileName:_jsxFileName,lineNumber:83}})),
+
+
+
+_react2.default.createElement(_Body.Body,{style:{borderColor:"transparent"},__source:{fileName:_jsxFileName,lineNumber:90}},
+_react2.default.createElement(_Text.Text,{__source:{fileName:_jsxFileName,lineNumber:91}},
+data.text)),
+
+
+_react2.default.createElement(_Right.Right,{__source:{fileName:_jsxFileName,lineNumber:95}})));
+
+
+}},{key:"renderRow",value:function renderRow(
+
+data,i,id){
+if(this.state.items[0]==="string"){
+return this.renderRowText(data,i,id);
+}
+return this.renderRowObject(data,i,id);
 }},{key:"render",value:function render()
-{var _this2=this;
+
+{var _this4=this;
 return(
 _react2.default.createElement(_reactNative.Modal,{
 animationType:"fade",
 transparent:true,
 visible:this.state.modalVisible,
 onRequestClose:function onRequestClose(){
-_this2.state.callback(-1);
-_this2.setState({modalVisible:false});
-},__source:{fileName:_jsxFileName,lineNumber:60}},
+_this4.state.callback(-1);
+_this4.setState({modalVisible:false});
+},__source:{fileName:_jsxFileName,lineNumber:109}},
 
 _react2.default.createElement(_reactNative.TouchableOpacity,{
 activeOpacity:1,
 onPress:function onPress(){
-_this2.state.callback(-1);
-_this2.setState({modalVisible:false});
+_this4.state.callback(-1);
+_this4.setState({modalVisible:false});
 },
 style:{
 backgroundColor:"rgba(0,0,0,0.4)",
 flex:1,
-justifyContent:"flex-end"},__source:{fileName:_jsxFileName,lineNumber:69}},
+justifyContent:"flex-end"},__source:{fileName:_jsxFileName,lineNumber:118}},
 
 
 _react2.default.createElement(_reactNative.TouchableOpacity,{
@@ -84,52 +133,16 @@ style:{
 backgroundColor:"#fff",
 height:this.state.length*80,
 padding:15,
-elevation:4},__source:{fileName:_jsxFileName,lineNumber:81}},
+elevation:4},__source:{fileName:_jsxFileName,lineNumber:130}},
 
 
-_react2.default.createElement(_Text.Text,{style:{color:"#757575"},__source:{fileName:_jsxFileName,lineNumber:90}},
+_react2.default.createElement(_Text.Text,{style:{color:"#757575"},__source:{fileName:_jsxFileName,lineNumber:139}},
 this.state.title),
 
 _react2.default.createElement(_List.List,{
 style:{marginHorizontal:-15,marginTop:15},
 dataArray:this.state.items,
-renderRow:function renderRow(data,i,id){
-return typeof _this2.state.items[0]==="string"?
-_react2.default.createElement(_ListItem.ListItem,{
-onPress:function onPress(){
-_this2.state.callback(id);
-_this2.setState({modalVisible:false});
-},
-style:{borderColor:"transparent"},__source:{fileName:_jsxFileName,lineNumber:98}},
-
-_react2.default.createElement(_Text.Text,{__source:{fileName:_jsxFileName,lineNumber:105}},
-data)):
-
-
-_react2.default.createElement(_ListItem.ListItem,{
-onPress:function onPress(){
-_this2.state.callback(id);
-_this2.setState({modalVisible:false});
-},
-style:{borderColor:"transparent"},
-icon:true,__source:{fileName:_jsxFileName,lineNumber:109}},
-
-_react2.default.createElement(_Left.Left,{__source:{fileName:_jsxFileName,lineNumber:117}},
-_react2.default.createElement(_Icon.Icon,{
-name:data.icon,
-style:{
-color:data.iconColor?data.iconColor:undefined},__source:{fileName:_jsxFileName,lineNumber:118}})),
-
-
-
-_react2.default.createElement(_Body.Body,{style:{borderColor:"transparent"},__source:{fileName:_jsxFileName,lineNumber:125}},
-_react2.default.createElement(_Text.Text,{__source:{fileName:_jsxFileName,lineNumber:126}},
-data.text)),
-
-
-_react2.default.createElement(_Right.Right,{__source:{fileName:_jsxFileName,lineNumber:130}}));
-
-},__source:{fileName:_jsxFileName,lineNumber:93}})))));
+renderRow:this.renderRow,__source:{fileName:_jsxFileName,lineNumber:142}})))));
 
 
 

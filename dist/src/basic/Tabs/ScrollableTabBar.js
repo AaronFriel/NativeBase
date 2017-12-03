@@ -1,19 +1,18 @@
 Object.defineProperty(exports,"__esModule",{value:true});exports.ScrollableTab=undefined;var _jsxFileName="src/basic/Tabs/ScrollableTabBar.js";var _react=require("react");var _react2=_interopRequireDefault(_react);
 var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_propTypes);
 var _createReactClass=require("create-react-class");var _createReactClass2=_interopRequireDefault(_createReactClass);
-
+var _reactNative=require("react-native");
 var _nativeBaseShoutemTheme=require("native-base-shoutem-theme");
+var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);
 var _mapPropsToStyleNames=require("../../Utils/mapPropsToStyleNames");var _mapPropsToStyleNames2=_interopRequireDefault(_mapPropsToStyleNames);
 var _platform=require("./../../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);
 var _index=require("./../../index");
-var _lodash=require("lodash");var _lodash2=_interopRequireDefault(_lodash);
+var _Utils=require("../../Utils");
+var _Button=require("../Button");var _Button2=_interopRequireDefault(_Button);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
-var _Utils=require("../../Utils");function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}var ReactNative=require("react-native");var View=ReactNative.View,Animated=ReactNative.Animated,StyleSheet=ReactNative.StyleSheet,ScrollView=ReactNative.ScrollView,Platform=ReactNative.Platform,Dimensions=ReactNative.Dimensions;
-var Button=require("./Button");
+var WINDOW_WIDTH=_reactNative.Dimensions.get("window").width;
 
-var WINDOW_WIDTH=Dimensions.get("window").width;
-
-var styles=StyleSheet.create({
+var styles=_reactNative.StyleSheet.create({
 tab:{
 height:49,
 alignItems:"center",
@@ -71,8 +70,8 @@ underlineStyle:{}};
 getInitialState:function getInitialState(){
 this._tabsMeasurements=[];
 return{
-_leftTabUnderline:new Animated.Value(0),
-_widthTabUnderline:new Animated.Value(0),
+_leftTabUnderline:new _reactNative.Animated.Value(0),
+_widthTabUnderline:new _reactNative.Animated.Value(0),
 _containerWidth:null};
 
 },
@@ -116,13 +115,19 @@ var absolutePageOffset=pageOffset*tabWidth;
 var newScrollX=tabOffset+absolutePageOffset;
 
 
-newScrollX-=(containerWidth-(1-pageOffset)*tabWidth-pageOffset*nextTabWidth)/2;
+newScrollX-=
+(containerWidth-
+(1-pageOffset)*tabWidth-
+pageOffset*nextTabWidth)/
+2;
 newScrollX=newScrollX>=0?newScrollX:0;
 
-if(Platform.OS==="android"){
+if(_reactNative.Platform.OS==="android"){
 this._scrollView.scrollTo({x:newScrollX,y:0,animated:false});
 }else{
-var rightBoundScroll=this._tabContainerMeasurements.width-this._containerMeasurements.width;
+var rightBoundScroll=
+this._tabContainerMeasurements.width-
+this._containerMeasurements.width;
 newScrollX=newScrollX>rightBoundScroll?rightBoundScroll:newScrollX;
 this._scrollView.scrollTo({x:newScrollX,y:0,animated:false});
 }
@@ -159,16 +164,20 @@ textStyle,
 activeTextStyle,
 tabHeaderStyle)
 {
-var headerContent=typeof name!=="string"?name.props.children:undefined;var _props=
-this.props,activeTextColor=_props.activeTextColor,inactiveTextColor=_props.inactiveTextColor;
-var textColor=isTabActive?activeTextColor:inactiveTextColor;
-var fontWeight=isTabActive?"bold":"normal";
-
+var headerContent=typeof name!=="string"?name.props.children:undefined;
 if(typeof name==="string"){
 return(
-_react2.default.createElement(Button,{key:name+"_"+page,onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:169}},
-_react2.default.createElement(_index.TabHeading,{scrollable:true,style:isTabActive?activeTabStyle:tabStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:170}},
-_react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:textStyle,__source:{fileName:_jsxFileName,lineNumber:171}},
+_react2.default.createElement(_Button2.default,{
+key:name+"_"+page,
+onPress:function onPress(){return onPressHandler(page);},
+onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:170}},
+
+_react2.default.createElement(_index.TabHeading,{
+scrollable:true,
+style:isTabActive?activeTabStyle:tabStyle,
+active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:175}},
+
+_react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:textStyle,__source:{fileName:_jsxFileName,lineNumber:180}},
 name))));
 
 
@@ -176,8 +185,12 @@ name))));
 
 }else{
 return(
-_react2.default.createElement(Button,{key:_lodash2.default.random(1.2,5.2),onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:179}},
-_react2.default.createElement(_index.TabHeading,{scrollable:true,style:tabHeaderStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:180}},
+_react2.default.createElement(_Button2.default,{
+key:_lodash2.default.random(1.2,5.2),
+onPress:function onPress(){return onPressHandler(page);},
+onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:188}},
+
+_react2.default.createElement(_index.TabHeading,{scrollable:true,style:tabHeaderStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:193}},
 headerContent)));
 
 
@@ -206,11 +219,15 @@ width:this.state._widthTabUnderline};
 
 
 return(
-_react2.default.createElement(View,{
-style:[styles.container,{backgroundColor:this.props.backgroundColor},this.props.style],
-onLayout:this.onContainerLayout,__source:{fileName:_jsxFileName,lineNumber:209}},
+_react2.default.createElement(_reactNative.View,{
+style:[
+styles.container,
+{backgroundColor:this.props.backgroundColor},
+this.props.style],
 
-_react2.default.createElement(ScrollView,{
+onLayout:this.onContainerLayout,__source:{fileName:_jsxFileName,lineNumber:222}},
+
+_react2.default.createElement(_reactNative.ScrollView,{
 automaticallyAdjustContentInsets:false,
 ref:function ref(scrollView){
 _this._scrollView=scrollView;
@@ -221,12 +238,16 @@ showsVerticalScrollIndicator:false,
 directionalLockEnabled:true,
 onScroll:this.props.onScroll,
 bounces:false,
-scrollsToTop:false,__source:{fileName:_jsxFileName,lineNumber:213}},
+scrollsToTop:false,__source:{fileName:_jsxFileName,lineNumber:230}},
 
-_react2.default.createElement(View,{
-style:[styles.tabs,{width:this.state._containerWidth},this.props.tabsContainerStyle],
+_react2.default.createElement(_reactNative.View,{
+style:[
+styles.tabs,
+{width:this.state._containerWidth},
+this.props.tabsContainerStyle],
+
 ref:"tabContainer",
-onLayout:this.onTabContainerLayout,__source:{fileName:_jsxFileName,lineNumber:226}},
+onLayout:this.onTabContainerLayout,__source:{fileName:_jsxFileName,lineNumber:243}},
 
 this.props.tabs.map(function(name,page){
 var isTabActive=_this.props.activeTab===page;
@@ -236,7 +257,7 @@ name,
 page,
 isTabActive,
 _this.props.goToPage,
-_this.measureTab.bind(_this,page),
+function(e){return _this.measureTab(page,e);},
 _this.props.tabStyle[page],
 _this.props.activeTabStyle[page],
 _this.props.textStyle[page],
@@ -244,7 +265,13 @@ _this.props.activeTextStyle[page],
 _this.props.tabHeaderStyle[page]);
 
 }),
-_react2.default.createElement(Animated.View,{style:[tabUnderlineStyle,dynamicTabUnderline,this.props.underlineStyle],__source:{fileName:_jsxFileName,lineNumber:247}})))));
+_react2.default.createElement(_reactNative.Animated.View,{
+style:[
+tabUnderlineStyle,
+dynamicTabUnderline,
+this.props.underlineStyle],__source:{fileName:_jsxFileName,lineNumber:268}})))));
+
+
 
 
 

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { View, Modal, Platform, ActionSheetIOS, TouchableOpacity } from "react-native";
+import { Modal, Platform, ActionSheetIOS, TouchableOpacity } from "react-native";
 import { connectStyle } from "native-base-shoutem-theme";
 import { Text } from "./Text";
-import { Button } from "./Button";
-import { ViewNB } from "./View";
 import { Icon } from "./Icon";
 import { Left } from "./Left";
 import { Right } from "./Right";
@@ -28,11 +26,10 @@ class ActionSheetContainer extends Component {
 	}
 	showActionSheet(config, callback) {
 		if (Platform.OS === "ios") {
-			if (typeof config.options[0] == "object") {
-				let options = config.options;
-				let filtered = options.map(item => {
-					return item.text;
-				});
+			if (typeof config.options[0] === "object") {
+				const options = config.options;
+				const filtered = options.map(item => item.text);
+				// eslint-disable-next-line no-param-reassign
 				config.options = filtered;
 				ActionSheetIOS.showActionSheetWithOptions(config, callback);
 			} else {
@@ -46,7 +43,7 @@ class ActionSheetContainer extends Component {
 				destructiveButtonIndex: config.destructiveButtonIndex,
 				cancelButtonIndex: config.cancelButtonIndex,
 				modalVisible: true,
-				callback: callback,
+				callback,
 			});
 		}
 	}
@@ -55,11 +52,63 @@ class ActionSheetContainer extends Component {
 			console.warn(`It's not recommended to set autoHide false with duration`);
 		}
 	}
+
+	renderRowText(data, i, id) {
+		return (
+			<ListItem
+				onPress={() => {
+					this.state.callback(id);
+					this.setState({ modalVisible: false });
+				}}
+				style={{ borderColor: "transparent" }}
+			>
+				<Text>
+					{data}
+				</Text>
+			</ListItem>
+		);
+	}
+
+	renderRowObject(data, i, id) {
+		return (
+			<ListItem
+				onPress={() => {
+					this.state.callback(id);
+					this.setState({ modalVisible: false });
+				}}
+				style={{ borderColor: "transparent" }}
+				icon
+			>
+				<Left>
+					<Icon
+						name={data.icon}
+						style={{
+							color: data.iconColor,
+						}}
+					/>
+				</Left>
+				<Body style={{ borderColor: "transparent" }}>
+					<Text>
+						{data.text}
+					</Text>
+				</Body>
+				<Right />
+			</ListItem>
+		);
+	}
+
+	renderRow(data, i, id) {
+		if (this.state.items[0] === "string") {
+			return this.renderRowText(data, i, id);
+		}
+		return this.renderRowObject(data, i, id);
+	}
+
 	render() {
 		return (
 			<Modal
 				animationType={"fade"}
-				transparent={true}
+				transparent
 				visible={this.state.modalVisible}
 				onRequestClose={() => {
 					this.state.callback(-1);
@@ -93,43 +142,7 @@ class ActionSheetContainer extends Component {
 						<List
 							style={{ marginHorizontal: -15, marginTop: 15 }}
 							dataArray={this.state.items}
-							renderRow={(data, i, id) => {
-								return typeof this.state.items[0] === "string"
-									? <ListItem
-											onPress={() => {
-												this.state.callback(id);
-												this.setState({ modalVisible: false });
-											}}
-											style={{ borderColor: "transparent" }}
-										>
-											<Text>
-												{data}
-											</Text>
-										</ListItem>
-									: <ListItem
-											onPress={() => {
-												this.state.callback(id);
-												this.setState({ modalVisible: false });
-											}}
-											style={{ borderColor: "transparent" }}
-											icon
-										>
-											<Left>
-												<Icon
-													name={data.icon}
-													style={{
-														color: data.iconColor ? data.iconColor : undefined,
-													}}
-												/>
-											</Left>
-											<Body style={{ borderColor: "transparent" }}>
-												<Text>
-													{data.text}
-												</Text>
-											</Body>
-											<Right />
-										</ListItem>;
-							}}
+							renderRow={this.renderRow}
 						/>
 					</TouchableOpacity>
 				</TouchableOpacity>

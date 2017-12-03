@@ -1,8 +1,6 @@
 Object.defineProperty(exports,"__esModule",{value:true});exports.SwipeRow=undefined;var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _jsxFileName="src/basic/SwipeRow.js";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require("react");var _react2=_interopRequireDefault(_react);
-var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_propTypes);
 var _reactNative=require("react-native");
 var _nativeBaseShoutemTheme=require("native-base-shoutem-theme");
-var _Text=require("./Text");
 var _Left=require("./Left");
 var _Right=require("./Right");
 var _Body=require("./Body");
@@ -65,7 +63,11 @@ onShouldBlockNativeResponder:function onShouldBlockNativeResponder(_){return fal
 }},{key:"getPreviewAnimation",value:function getPreviewAnimation(
 
 toValue,delay){
-return _reactNative.Animated.timing(this._translateX,{duration:this.props.previewDuration,toValue:toValue,delay:delay});
+return _reactNative.Animated.timing(this._translateX,{
+duration:this.props.previewDuration,
+toValue:toValue,
+delay:delay});
+
 }},{key:"onContentLayout",value:function onContentLayout(
 
 e){var _this3=this;
@@ -110,7 +112,9 @@ return;
 if(this.parentScrollEnabled){
 
 this.parentScrollEnabled=false;
-this.props.setScrollEnabled&&this.props.setScrollEnabled(false);
+if(this.props.setScrollEnabled){
+this.props.setScrollEnabled(false);
+}
 }
 
 if(this.swipeInitialX===null){
@@ -119,7 +123,9 @@ this.swipeInitialX=this._translateX._value;
 }
 if(!this.horizontalSwipeGestureBegan){
 this.horizontalSwipeGestureBegan=true;
-this.props.swipeGestureBegan&&this.props.swipeGestureBegan();
+if(this.props.swipeGestureBegan){
+this.props.swipeGestureBegan();
+}
 }
 
 var newDX=this.swipeInitialX+dx;
@@ -141,27 +147,25 @@ this._translateX.setValue(newDX);
 }
 }},{key:"handlePanResponderEnd",value:function handlePanResponderEnd(
 
-e,gestureState){
+_e,_gestureState){
 
 if(!this.parentScrollEnabled){
 this.parentScrollEnabled=true;
-this.props.setScrollEnabled&&this.props.setScrollEnabled(true);
+if(this.props.setScrollEnabled){
+this.props.setScrollEnabled(true);
+}
 }
 
 
 var toValue=0;
-if(this._translateX._value>=0){
-
-if(this._translateX._value>this.props.leftOpenValue*(this.props.swipeToOpenPercent/100)){
+var xTranslation=this._translateX._value;
+var swipeThreshold=this.props.swipeToOpenPercent/100;
+if(xTranslation>=0&&xTranslation>this.props.leftOpenValue*swipeThreshold){
 
 toValue=this.props.leftOpenValue;
-}
-}else{
-
-if(this._translateX._value<this.props.rightOpenValue*(this.props.swipeToOpenPercent/100)){
+}else if(xTranslation<this.props.rightOpenValue*swipeThreshold){
 
 toValue=this.props.rightOpenValue;
-}
 }
 
 this.manuallySwipeRow(toValue);
@@ -180,17 +184,17 @@ toValue:toValue,
 friction:this.props.friction,
 tension:this.props.tension}).
 start(function(_){
-if(toValue===0){
-_this4.props.onRowDidClose&&_this4.props.onRowDidClose();
-}else{
-_this4.props.onRowDidOpen&&_this4.props.onRowDidOpen();
+if(toValue===0&&_this4.props.onRowDidClose){
+_this4.props.onRowDidClose();
+}else if(_this4.props.onRowDidOpen){
+_this4.props.onRowDidOpen();
 }
 });
 
-if(toValue===0){
-this.props.onRowClose&&this.props.onRowClose();
-}else{
-this.props.onRowOpen&&this.props.onRowOpen(toValue);
+if(toValue===0&&this.props.onRowClose){
+this.props.onRowClose();
+}else if(this.props.onRowOpen){
+this.props.onRowOpen(toValue);
 }
 
 
@@ -207,14 +211,14 @@ _react2.default.createElement(_reactNative.Animated.View,_extends({},
 this._panResponder.panHandlers,{
 style:{
 transform:[{translateX:this._translateX}],
-zIndex:2},__source:{fileName:_jsxFileName,lineNumber:206}}),
+zIndex:2},__source:{fileName:_jsxFileName,lineNumber:210}}),
 
 
 !this.props.list?
-_react2.default.createElement(_ListItem.ListItem,{list:true,__source:{fileName:_jsxFileName,lineNumber:214}},
+_react2.default.createElement(_ListItem.ListItem,{list:true,__source:{fileName:_jsxFileName,lineNumber:218}},
 this.props.body):
 
-_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#FFF'},__source:{fileName:_jsxFileName,lineNumber:217}},
+_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#FFF'},__source:{fileName:_jsxFileName,lineNumber:221}},
 this.props.body)));
 
 
@@ -226,14 +230,14 @@ this._panResponder.panHandlers,{
 onLayout:function onLayout(e){return _this5.onContentLayout(e);},
 style:{
 transform:[{translateX:this._translateX}],
-zIndex:2},__source:{fileName:_jsxFileName,lineNumber:224}}),
+zIndex:2},__source:{fileName:_jsxFileName,lineNumber:228}}),
 
 
 !this.props.list?
-_react2.default.createElement(_ListItem.ListItem,{list:true,__source:{fileName:_jsxFileName,lineNumber:233}},
+_react2.default.createElement(_ListItem.ListItem,{list:true,__source:{fileName:_jsxFileName,lineNumber:237}},
 this.props.body):
 
-_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#FFF'},__source:{fileName:_jsxFileName,lineNumber:236}},
+_react2.default.createElement(_reactNative.View,{style:{backgroundColor:'#FFF'},__source:{fileName:_jsxFileName,lineNumber:240}},
 this.props.body)));
 
 
@@ -243,7 +247,7 @@ this.props.body)));
 
 {
 return(
-_react2.default.createElement(_reactNative.View,{style:this.props.style?this.props.style:undefined,__source:{fileName:_jsxFileName,lineNumber:246}},
+_react2.default.createElement(_reactNative.View,{style:this.props.style?this.props.style:undefined,__source:{fileName:_jsxFileName,lineNumber:250}},
 _react2.default.createElement(_reactNative.View,{
 style:[
 styles.hidden,
@@ -251,15 +255,15 @@ styles.hidden,
 height:this.state.hiddenHeight,
 flex:1,
 flexDirection:"row",
-justifyContent:"space-between"}],__source:{fileName:_jsxFileName,lineNumber:247}},
+justifyContent:"space-between"}],__source:{fileName:_jsxFileName,lineNumber:251}},
 
 
 
-_react2.default.createElement(_Left.Left,{style:{width:this.props.leftOpenValue,zIndex:1},__source:{fileName:_jsxFileName,lineNumber:258}},
+_react2.default.createElement(_Left.Left,{style:{width:this.props.leftOpenValue,zIndex:1},__source:{fileName:_jsxFileName,lineNumber:262}},
 this.props.left),
 
-_react2.default.createElement(_Body.Body,{style:{flex:0},__source:{fileName:_jsxFileName,lineNumber:261}}),
-_react2.default.createElement(_Right.Right,{style:{width:-this.props.rightOpenValue,zIndex:1},__source:{fileName:_jsxFileName,lineNumber:262}},
+_react2.default.createElement(_Body.Body,{style:{flex:0},__source:{fileName:_jsxFileName,lineNumber:265}}),
+_react2.default.createElement(_Right.Right,{style:{width:-this.props.rightOpenValue,zIndex:1},__source:{fileName:_jsxFileName,lineNumber:266}},
 this.props.right)),
 
 

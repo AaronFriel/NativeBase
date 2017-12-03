@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TouchableOpacity, Animated, Platform, View } from "react-native";
+import { connectStyle } from "native-base-shoutem-theme";
+import _ from "lodash";
+
 import { Input } from "./Input";
 import { Label } from "./Label";
 import { Icon } from "./Icon";
-
-import { connectStyle } from "native-base-shoutem-theme";
 import variables from "../theme/variables/platform";
 import { computeProps } from "../Utils/computeProps";
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
-import _ from "lodash";
 
 class Item extends Component {
 	constructor(props) {
@@ -20,31 +20,30 @@ class Item extends Component {
 			opacAnim: new Animated.Value(1),
 		};
 	}
-	componentDidMount() {
-		if (this.props.floatingLabel) {
-			if (this.inputProps && this.inputProps.value) {
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.floatingLabel) {
+			if (nextProps && nextProps.value) {
 				this.setState({ isFocused: true });
 				this.floatUp(-16);
 			}
-			if (this.inputProps && this.inputProps.getRef) this.inputProps.getRef(this._inputRef);
+			if (nextProps && nextProps.getRef) nextProps.getRef(this._inputRef);
 		}
-	}
-	componentWillReceiveProps(nextProps) {
+
 		const childrenArray = React.Children.toArray(nextProps.children);
 		let inputProps = {};
-		let input = _.remove(childrenArray, item => {
+		_.remove(childrenArray, (item) => {
 			if (item.type.displayName === "Styled(Input)") {
 				inputProps = item.props;
-				this.inputProps = item.props;
 				return item;
 			}
 		});
 		if (this.props.floatingLabel) {
-			if (this.inputProps && this.inputProps.value) {
+			if (inputProps && inputProps.value) {
 				this.setState({ isFocused: true });
 				this.floatUp(-16);
 			}
-			if (this.inputProps && this.inputProps.getRef) this.inputProps.getRef(this._inputRef);
+			if (inputProps && inputProps.getRef) inputProps.getRef(this._inputRef);
 		}
 	}
 
@@ -108,26 +107,24 @@ class Item extends Component {
 
 		let label = [];
 		let labelProps = {};
-		label = _.remove(childrenArray, item => {
+		label = _.remove(childrenArray, (item) => {
 			if (item.type === Label) {
 				labelProps = item.props;
 				return item;
 			}
 		});
 
-		let input = [];
 		let inputProps = {};
-		input = _.remove(childrenArray, item => {
+		_.remove(childrenArray, (item) => {
 			if (item.type === Input) {
 				inputProps = item.props;
-				this.inputProps = item.props;
 				return item;
 			}
 		});
 
 		let icon = [];
 		let iconProps = {};
-		icon = _.remove(childrenArray, item => {
+		icon = _.remove(childrenArray, (item) => {
 			if (item.type === Icon) {
 				iconProps = item.props;
 				return item;
@@ -157,19 +154,25 @@ class Item extends Component {
 					{...inputProps}
 					onFocus={() => {
 						this.setState({ isFocused: true });
-						inputProps.onFocus && inputProps.onFocus();
+						if (inputProps.onFocus) {
+							inputProps.onFocus();
+						}
 					}}
 					onBlur={() => {
-						inputProps.value
-							? this.setState({
-									isFocused: true,
-								})
-							: !this.state.text.length && this.setState({ isFocused: false });
-						inputProps.onBlur && inputProps.onBlur();
+						if (inputProps.value) {
+							this.setState({ isFocused: true });
+						} else if (!this.state.text.length) {
+							this.setState({ isFocused: false });
+						}
+						if (inputProps.onBlur) {
+							inputProps.onBlur();
+						}
 					}}
-					onChangeText={text => {
+					onChangeText={(text) => {
 						this.setState({ text });
-						inputProps.onChangeText && inputProps.onChangeText(text);
+						if (inputProps.onChangeText) {
+							inputProps.onChangeText(text);
+						}
 					}}
 				/>
 			);
@@ -198,19 +201,27 @@ class Item extends Component {
 					{...inputProps}
 					onFocus={() => {
 						this.setState({ isFocused: true });
-						inputProps.onFocus && inputProps.onFocus();
+						if (inputProps.onFocus) {
+							inputProps.onFocus();
+						}
 					}}
 					onBlur={() => {
-						inputProps.value
-							? this.setState({
+						if (inputProps.value) {
+							this.setState({
 									isFocused: true,
-								})
-							: !this.state.text.length && this.setState({ isFocused: false });
-						inputProps.onBlur && inputProps.onBlur();
+								});
+						} else if (!this.state.text.length) {
+							this.setState({ isFocused: false });
+						}
+						if (inputProps.onBlur) {
+							inputProps.onBlur();
+						}
 					}}
-					onChangeText={text => {
+					onChangeText={(text) => {
 						this.setState({ text });
-						inputProps.onChangeText && inputProps.onChangeText(text);
+						if (inputProps.onChangeText) {
+							inputProps.onChangeText(text);
+						}
 					}}
 				/>
 			);
@@ -260,20 +271,6 @@ class Item extends Component {
 		);
 	}
 }
-
-const childrenType = function(props, propName, component) {
-	let error;
-	const prop = props[propName];
-	if (!props.children.length) {
-		error = new Error(`${component} should have both Label and Input components`);
-	} else if (
-		props.children[0].type.displayName !== "Styled(Label)" ||
-		props.children[1].type.displayName !== "Styled(Input)"
-	) {
-		error = new Error(`${component} should have Label and Input components only`);
-	}
-	return error;
-};
 
 Item.propTypes = {
 	...TouchableOpacity.propTypes,

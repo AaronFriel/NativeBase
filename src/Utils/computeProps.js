@@ -7,10 +7,13 @@ export function computeProps(incomingProps, defaultProps) {
   // External props has a higher precedence
   let computedProps = {};
 
+  // eslint-disable-next-line
   incomingProps = _.clone(incomingProps);
+  // eslint-disable-next-line
   delete incomingProps.children;
 
   const incomingPropsStyle = incomingProps.style;
+  // eslint-disable-next-line
   delete incomingProps.style;
 
   // console.log(defaultProps, incomingProps);
@@ -24,7 +27,7 @@ export function computeProps(incomingProps, defaultProps) {
     let computedPropsStyle = {};
     computedProps.style = {};
     if (Array.isArray(incomingPropsStyle)) {
-      _.forEach(incomingPropsStyle, style => {
+      _.forEach(incomingPropsStyle, (style) => {
         if (typeof style === "number") {
           _.merge(computedPropsStyle, ReactNativePropRegistry.getByID(style));
         } else {
@@ -41,4 +44,4 @@ export function computeProps(incomingProps, defaultProps) {
   }
   // console.log("computedProps ", computedProps);
   return computedProps;
-};
+}

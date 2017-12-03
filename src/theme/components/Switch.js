@@ -1,6 +1,6 @@
 import variable from "./../variables/platform";
 
-export default (variables = variable) => {
+export default (_variables = variable) => {
   const switchTheme = {
     marginVertical: -5,
   };

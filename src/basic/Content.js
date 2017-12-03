@@ -10,7 +10,7 @@ class Content extends Component {
 			<KeyboardAwareScrollView
 				automaticallyAdjustContentInsets={false}
 				resetScrollToCoords={this.props.disableKBDismissScroll ? null : { x: 0, y: 0 }}
-				ref={c => {
+				ref={(c) => {
 					this._scrollview = c;
 					this._root = c;
 				}}
@@ -23,9 +23,12 @@ class Content extends Component {
 }
 
 Content.propTypes = {
+	// eslint-disable-next-line react/no-unused-prop-types
 	style: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+	// eslint-disable-next-line react/no-unused-prop-types
 	padder: PropTypes.bool,
 	disableKBDismissScroll: PropTypes.bool,
+	// eslint-disable-next-line react/no-unused-prop-types
 	enableResetScrollToCoords: PropTypes.bool,
 };
 

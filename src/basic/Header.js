@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { View, StatusBar } from "react-native";
-import { ViewPropTypes } from '../Utils';
 import { connectStyle } from "native-base-shoutem-theme";
+
+import { ViewPropTypes } from '../Utils';
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 import variable from "../theme/variables/platform";
-import _ from "lodash";
 
 class Header extends Component {
 	static contextTypes = {
@@ -20,7 +20,9 @@ class Header extends Component {
 			<View>
 				<StatusBar
 					backgroundColor={
-						this.props.androidStatusBarColor ? this.props.androidStatusBarColor : variables.statusBarColor
+						this.props.androidStatusBarColor
+							? this.props.androidStatusBarColor
+							: variables.statusBarColor
 					}
 					barStyle={
 						this.props.iosBarStyle

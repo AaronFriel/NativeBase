@@ -23,9 +23,12 @@ this.props.children));
 
 
 Content.propTypes={
+
 style:_propTypes2.default.oneOfType([_propTypes2.default.object,_propTypes2.default.number,_propTypes2.default.array]),
+
 padder:_propTypes2.default.bool,
 disableKBDismissScroll:_propTypes2.default.bool,
+
 enableResetScrollToCoords:_propTypes2.default.bool};
 
 

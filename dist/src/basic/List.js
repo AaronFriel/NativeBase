@@ -68,10 +68,12 @@ if(this.openCellId&&this.openCellId!==cellIdentifier){
 this.safeCloseOpenRow();
 }
 this.openCellId=cellIdentifier;
-this.props.onRowOpen&&this.props.onRowOpen(secId,rowId,rowMap);
+if(this.props.onRowOpen){
+this.props.onRowOpen(secId,rowId,rowMap);
+}
 }},{key:'onRowPress',value:function onRowPress(
 
-id){
+_id){
 if(this.openCellId){
 if(this.props.closeOnRowPress){
 this.safeCloseOpenRow();
@@ -79,7 +81,7 @@ this.openCellId=null;
 }
 }
 }},{key:'closeRow',value:function closeRow(
-id){
+_id){
 if(this.openCellId){
 if(this.props.closeOnRowPress){
 this.safeCloseOpenRow();
@@ -95,26 +97,40 @@ this.safeCloseOpenRow();
 this.openCellId=null;
 }
 }
-this.props.onScroll&&this.props.onScroll(e);
+if(this.props.onScroll){
+this.props.onScroll(e);
+}
 }},{key:'setRefs',value:function setRefs(
 
 ref){
 this._listView=ref;
-this.props.listViewRef&&this.props.listViewRef(ref);
+if(this.props.listViewRef){
+this.props.listViewRef(ref);
+}
 }},{key:'renderRow',value:function renderRow(
 
-rowData,secId,rowId,rowMap){var _this2=this;
+rowData,secId,rowId,_rowMap){var _this2=this;
 var previewRowId=
-this.props.dataSource&&this.props.dataSource.getRowIDForFlatIndex(this.props.previewRowIndex||0);
+this.props.dataSource&&
+this.props.dataSource.getRowIDForFlatIndex(this.props.previewRowIndex||0);
 return(
 _react2.default.createElement(_SwipeRow.SwipeRow,{
 list:true,
 ref:function ref(row){return _this2._rows[''+secId+rowId]=row;},
 swipeGestureBegan:function swipeGestureBegan(_){return _this2.rowSwipeGestureBegan(''+secId+rowId);},
 onRowOpen:function onRowOpen(_){return _this2.onRowOpen(secId,rowId,_this2._rows);},
-onRowDidOpen:function onRowDidOpen(_){return _this2.props.onRowDidOpen&&_this2.props.onRowDidOpen(secId,rowId,_this2._rows);},
-onRowClose:function onRowClose(_){return _this2.props.onRowClose&&_this2.props.onRowClose(secId,rowId,_this2._rows);},
-onRowDidClose:function onRowDidClose(_){return _this2.props.onRowDidClose&&_this2.props.onRowDidClose(secId,rowId,_this2._rows);},
+onRowDidOpen:function onRowDidOpen(_){return(
+_this2.props.onRowDidOpen&&
+_this2.props.onRowDidOpen(secId,rowId,_this2._rows));},
+
+onRowClose:function onRowClose(_){return(
+_this2.props.onRowClose&&
+_this2.props.onRowClose(secId,rowId,_this2._rows));},
+
+onRowDidClose:function onRowDidClose(_){return(
+_this2.props.onRowDidClose&&
+_this2.props.onRowDidClose(secId,rowId,_this2._rows));},
+
 onRowPress:function onRowPress(_){return _this2.onRowPress(''+secId+rowId);},
 closeRow:function closeRow(_){return _this2.closeRow(''+secId+rowId);},
 setScrollEnabled:function setScrollEnabled(enable){return _this2.setScrollEnabled(enable);},
@@ -127,7 +143,10 @@ stopLeftSwipe:this.props.stopLeftSwipe,
 stopRightSwipe:this.props.stopRightSwipe,
 recalculateHiddenLayout:this.props.recalculateHiddenLayout,
 style:this.props.swipeRowStyle,
-preview:(this.props.previewFirstRow||this.props.previewRowIndex)&&rowId===previewRowId,
+preview:
+(this.props.previewFirstRow||this.props.previewRowIndex)&&
+rowId===previewRowId,
+
 previewDuration:this.props.previewDuration,
 previewOpenValue:this.props.previewOpenValue,
 tension:this.props.tension,
@@ -136,7 +155,7 @@ directionalDistanceChangeThreshold:this.props.directionalDistanceChangeThreshold
 swipeToOpenPercent:this.props.swipeToOpenPercent,
 left:this.props.renderLeftHiddenRow(rowData,secId,rowId,this._rows),
 right:this.props.renderRightHiddenRow(rowData,secId,rowId,this._rows),
-body:this.props.renderRow(rowData,secId,rowId,this._rows),__source:{fileName:_jsxFileName,lineNumber:110}}));
+body:this.props.renderRow(rowData,secId,rowId,this._rows),__source:{fileName:_jsxFileName,lineNumber:117}}));
 
 
 }},{key:'render',value:function render()
@@ -150,7 +169,7 @@ _this3.setRefs(_ref);
 _this3._root=_ref;
 },
 onScroll:function onScroll(e){return _this3.onScroll(e);},
-renderRow:function renderRow(rowData,secId,rowId){return _this3.renderRow(rowData,secId,rowId,_this3._rows);},__source:{fileName:_jsxFileName,lineNumber:146}})));
+renderRow:function renderRow(rowData,secId,rowId){return _this3.renderRow(rowData,secId,rowId,_this3._rows);},__source:{fileName:_jsxFileName,lineNumber:165}})));
 
 
 }else if(this.state.dataSource){
@@ -160,12 +179,12 @@ this.props,{
 ref:function ref(_ref2){return _this3._root=_ref2;},
 enableEmptySections:true,
 dataSource:this.state.dataSource,
-renderRow:this.props.renderRow,__source:{fileName:_jsxFileName,lineNumber:158}})));
+renderRow:this.props.renderRow,__source:{fileName:_jsxFileName,lineNumber:177}})));
 
 
 }
 return(
-_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},this.props,{__source:{fileName:_jsxFileName,lineNumber:168}}),
+_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},this.props,{__source:{fileName:_jsxFileName,lineNumber:187}}),
 this.renderChildren()));
 
 

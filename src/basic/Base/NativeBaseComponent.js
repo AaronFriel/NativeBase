@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import PropTypes from "prop-types";
 
 export default class NativeBaseComponent extends Component {
@@ -19,11 +19,11 @@ export default class NativeBaseComponent extends Component {
 
 	getChildContext() {
 		return {
-			theme: this.props.theme ? this.props.theme : this.context.theme,
+			theme: this.props.theme || this.context.theme,
 		};
 	}
 
 	getContextForegroundColor() {
-		return this.context.foregroundColor;
+		return this.props.foregroundColor || this.context.foregroundColor;
 	}
 }
