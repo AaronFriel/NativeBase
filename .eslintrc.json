@@ -1,10 +1,19 @@
 {
   "parser": "babel-eslint",
-  {
-    "indent": [
-      "error",
-      2
-    ]
+  // "extends": "airbnb",
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "indent": 0,
+    "no-use-before-define": 2,
+    "no-undef": 2,
+    "quotes": [0, "double", { "avoidEscape": true }],
+    "no-tabs": 0,
+    "comma-dangle": 0,
+    "no-nested-ternary": 0,
+    "no-param-reassign": 0
   },
   "plugins": [
     "react",

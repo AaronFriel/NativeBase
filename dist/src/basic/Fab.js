@@ -1,4 +1,5 @@
-Object.defineProperty(exports,"__esModule",{value:true});exports.Fab=undefined;var _jsxFileName="src/basic/Fab.js";var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _react=require("react");var _react2=_interopRequireDefault(_react);
+Object.defineProperty(exports,"__esModule",{value:true});exports.Fab=undefined;var _jsxFileName="src/basic/Fab.js";var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+var _react=require("react");var _react2=_interopRequireDefault(_react);
 var _propTypes=require("prop-types");var _propTypes2=_interopRequireDefault(_propTypes);
 var _computeProps=require("../Utils/computeProps");
 
@@ -238,7 +239,7 @@ _react2.default.createElement(AnimatedFab,_extends({
 style:_this3.getOtherButtonStyle(child,i)},
 _this3.prepareButtonProps(child,i),{
 fabButton:true,
-key:i,__source:{fileName:_jsxFileName,lineNumber:237}}),
+key:i,__source:{fileName:_jsxFileName,lineNumber:238}}),
 
 child.props.children));
 
@@ -379,10 +380,10 @@ active:_this4.props.active});
 active=this.props.active;
 
 return(
-_react2.default.createElement(_reactNative.Animated.View,{style:this.getContainerStyle(),__source:{fileName:_jsxFileName,lineNumber:382}},
+_react2.default.createElement(_reactNative.Animated.View,{style:this.getContainerStyle(),__source:{fileName:_jsxFileName,lineNumber:383}},
 this.renderButtons(),
 _reactNative.Platform.OS!=="android"||_platform2.default.androidRipple===false||_reactNative.Platform["Version"]<=21?
-_react2.default.createElement(_reactNative.TouchableOpacity,_extends({onPress:function onPress(){return _this5.fabOnPress();}},this.prepareFabProps(),{activeOpacity:1,__source:{fileName:_jsxFileName,lineNumber:385}}),
+_react2.default.createElement(_reactNative.TouchableOpacity,_extends({onPress:function onPress(){return _this5.fabOnPress();}},this.prepareFabProps(),{activeOpacity:1,__source:{fileName:_jsxFileName,lineNumber:386}}),
 this.renderFab()):
 
 
@@ -393,9 +394,9 @@ this.props.androidRippleColor?
 _reactNative.TouchableNativeFeedback.Ripple(this.props.androidRippleColor):
 _reactNative.TouchableNativeFeedback.Ripple(_platform2.default.androidRippleColor)},
 
-this.prepareFabProps(),{__source:{fileName:_jsxFileName,lineNumber:389}}),
+this.prepareFabProps(),{__source:{fileName:_jsxFileName,lineNumber:390}}),
 
-_react2.default.createElement(_reactNative.View,{style:[this.getInitialStyle().fab,this.props.style],__source:{fileName:_jsxFileName,lineNumber:398}},this.renderFab()))));
+_react2.default.createElement(_reactNative.View,{style:[this.getInitialStyle().fab,this.props.style],__source:{fileName:_jsxFileName,lineNumber:399}},this.renderFab()))));
 
 
 

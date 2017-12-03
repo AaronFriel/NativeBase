@@ -13,6 +13,28 @@ const Button = require("./Button");
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
 
+const styles = StyleSheet.create({
+	tab: {
+		height: 49,
+		alignItems: "center",
+		justifyContent: "center",
+		paddingLeft: 20,
+		paddingRight: 20,
+	},
+	container: {
+		height: 50,
+		borderWidth: 1,
+		borderTopWidth: 0,
+		borderLeftWidth: 0,
+		borderRightWidth: 0,
+		borderColor: "#ccc",
+	},
+	tabs: {
+		flexDirection: "row",
+		justifyContent: "space-around",
+	},
+});
+
 const ScrollableTabBar = createReactClass({
 	propTypes: {
 		goToPage: PropTypes.func,
@@ -255,24 +277,3 @@ const ScrollableTabBar = createReactClass({
 // module.exports = ScrollableTabBar;
 const StyledTab = connectStyle("NativeBase.ScrollableTab", {}, mapPropsToStyleNames)(ScrollableTabBar);
 export { StyledTab as ScrollableTab };
-const styles = StyleSheet.create({
-	tab: {
-		height: 49,
-		alignItems: "center",
-		justifyContent: "center",
-		paddingLeft: 20,
-		paddingRight: 20,
-	},
-	container: {
-		height: 50,
-		borderWidth: 1,
-		borderTopWidth: 0,
-		borderLeftWidth: 0,
-		borderRightWidth: 0,
-		borderColor: "#ccc",
-	},
-	tabs: {
-		flexDirection: "row",
-		justifyContent: "space-around",
-	},
-});

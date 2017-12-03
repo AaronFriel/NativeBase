@@ -20,6 +20,15 @@ const SceneComponent = require("./SceneComponent");
 const { DefaultTabBar } = require("./DefaultTabBar");
 const { ScrollableTabBar } = require("./ScrollableTabBar");
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scrollableContentAndroid: {
+    flex: 1,
+  },
+});
+
 const ScrollableTabView = createReactClass({
   mixins: [TimerMixin],
   statics: {
@@ -306,12 +315,3 @@ const ScrollableTabView = createReactClass({
 });
 
 export default ScrollableTabView;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollableContentAndroid: {
-    flex: 1,
-  },
-});

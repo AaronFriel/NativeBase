@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { computeProps } from "../Utils/computeProps";
@@ -21,7 +22,7 @@ class Fab extends Component {
 	};
 
 	state: {
-		buttons: void | React$Element<Button>,
+		buttons: React.ReactElement<Button>,
 		active: boolean,
 	};
 	constructor(props) {

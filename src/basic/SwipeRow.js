@@ -12,6 +12,21 @@ import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
 const PREVIEW_OPEN_DELAY = 700;
 const PREVIEW_CLOSE_DELAY = 300;
 
+const styles = {
+	container: {
+		// As of RN 0.29 flex: 1 is causing all rows to be the same height
+		// flex: 1
+	},
+	hidden: {
+		bottom: 0,
+		left: 0,
+		overflow: "hidden",
+		position: "absolute",
+		right: 0,
+		top: 0,
+	},
+};
+
 class SwipeRow extends Component {
 	static defaultProps = {
 		leftOpenValue: 0,
@@ -253,21 +268,6 @@ class SwipeRow extends Component {
 		);
 	}
 }
-
-const styles = {
-	container: {
-		// As of RN 0.29 flex: 1 is causing all rows to be the same height
-		// flex: 1
-	},
-	hidden: {
-		bottom: 0,
-		left: 0,
-		overflow: "hidden",
-		position: "absolute",
-		right: 0,
-		top: 0,
-	},
-};
 
 const StyledSwipeRow = connectStyle("NativeBase.SwipeRow", {}, mapPropsToStyleNames)(SwipeRow);
 export { StyledSwipeRow as SwipeRow };

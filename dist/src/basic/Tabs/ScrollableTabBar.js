@@ -13,6 +13,28 @@ var Button=require("./Button");
 
 var WINDOW_WIDTH=Dimensions.get("window").width;
 
+var styles=StyleSheet.create({
+tab:{
+height:49,
+alignItems:"center",
+justifyContent:"center",
+paddingLeft:20,
+paddingRight:20},
+
+container:{
+height:50,
+borderWidth:1,
+borderTopWidth:0,
+borderLeftWidth:0,
+borderRightWidth:0,
+borderColor:"#ccc"},
+
+tabs:{
+flexDirection:"row",
+justifyContent:"space-around"}});
+
+
+
 var ScrollableTabBar=(0,_createReactClass2.default)({displayName:"ScrollableTabBar",
 propTypes:{
 goToPage:_propTypes2.default.func,
@@ -144,9 +166,9 @@ var fontWeight=isTabActive?"bold":"normal";
 
 if(typeof name==="string"){
 return(
-_react2.default.createElement(Button,{key:name+"_"+page,onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:147}},
-_react2.default.createElement(_index.TabHeading,{scrollable:true,style:isTabActive?activeTabStyle:tabStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:148}},
-_react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:textStyle,__source:{fileName:_jsxFileName,lineNumber:149}},
+_react2.default.createElement(Button,{key:name+"_"+page,onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:169}},
+_react2.default.createElement(_index.TabHeading,{scrollable:true,style:isTabActive?activeTabStyle:tabStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:170}},
+_react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:textStyle,__source:{fileName:_jsxFileName,lineNumber:171}},
 name))));
 
 
@@ -154,8 +176,8 @@ name))));
 
 }else{
 return(
-_react2.default.createElement(Button,{key:_lodash2.default.random(1.2,5.2),onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:157}},
-_react2.default.createElement(_index.TabHeading,{scrollable:true,style:tabHeaderStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:158}},
+_react2.default.createElement(Button,{key:_lodash2.default.random(1.2,5.2),onPress:function onPress(){return onPressHandler(page);},onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:179}},
+_react2.default.createElement(_index.TabHeading,{scrollable:true,style:tabHeaderStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:180}},
 headerContent)));
 
 
@@ -186,7 +208,7 @@ width:this.state._widthTabUnderline};
 return(
 _react2.default.createElement(View,{
 style:[styles.container,{backgroundColor:this.props.backgroundColor},this.props.style],
-onLayout:this.onContainerLayout,__source:{fileName:_jsxFileName,lineNumber:187}},
+onLayout:this.onContainerLayout,__source:{fileName:_jsxFileName,lineNumber:209}},
 
 _react2.default.createElement(ScrollView,{
 automaticallyAdjustContentInsets:false,
@@ -199,12 +221,12 @@ showsVerticalScrollIndicator:false,
 directionalLockEnabled:true,
 onScroll:this.props.onScroll,
 bounces:false,
-scrollsToTop:false,__source:{fileName:_jsxFileName,lineNumber:191}},
+scrollsToTop:false,__source:{fileName:_jsxFileName,lineNumber:213}},
 
 _react2.default.createElement(View,{
 style:[styles.tabs,{width:this.state._containerWidth},this.props.tabsContainerStyle],
 ref:"tabContainer",
-onLayout:this.onTabContainerLayout,__source:{fileName:_jsxFileName,lineNumber:204}},
+onLayout:this.onTabContainerLayout,__source:{fileName:_jsxFileName,lineNumber:226}},
 
 this.props.tabs.map(function(name,page){
 var isTabActive=_this.props.activeTab===page;
@@ -222,7 +244,7 @@ _this.props.activeTextStyle[page],
 _this.props.tabHeaderStyle[page]);
 
 }),
-_react2.default.createElement(Animated.View,{style:[tabUnderlineStyle,dynamicTabUnderline,this.props.underlineStyle],__source:{fileName:_jsxFileName,lineNumber:225}})))));
+_react2.default.createElement(Animated.View,{style:[tabUnderlineStyle,dynamicTabUnderline,this.props.underlineStyle],__source:{fileName:_jsxFileName,lineNumber:247}})))));
 
 
 
@@ -255,23 +277,4 @@ this.updateView({value:this.props.scrollValue._value});
 
 var StyledTab=(0,_nativeBaseShoutemTheme.connectStyle)("NativeBase.ScrollableTab",{},_mapPropsToStyleNames2.default)(ScrollableTabBar);exports.
 ScrollableTab=StyledTab;
-var styles=StyleSheet.create({
-tab:{
-height:49,
-alignItems:"center",
-justifyContent:"center",
-paddingLeft:20,
-paddingRight:20},
-
-container:{
-height:50,
-borderWidth:1,
-borderTopWidth:0,
-borderLeftWidth:0,
-borderRightWidth:0,
-borderColor:"#ccc"},
-
-tabs:{
-flexDirection:"row",
-justifyContent:"space-around"}});
 //# sourceMappingURL=ScrollableTabBar.js.map

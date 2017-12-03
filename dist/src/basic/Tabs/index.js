@@ -20,6 +20,15 @@ var SceneComponent=require("./SceneComponent");var _require=
 require("./DefaultTabBar"),DefaultTabBar=_require.DefaultTabBar;var _require2=
 require("./ScrollableTabBar"),ScrollableTabBar=_require2.ScrollableTabBar;
 
+var styles=StyleSheet.create({
+container:{
+flex:1},
+
+scrollableContentAndroid:{
+flex:1}});
+
+
+
 var ScrollableTabView=(0,_createReactClass2.default)({displayName:"ScrollableTabView",
 mixins:[TimerMixin],
 statics:{
@@ -112,7 +121,7 @@ return null;
 }else if(this.props.renderTabBar){
 return React.cloneElement(this.props.renderTabBar(props),props);
 }else{
-return React.createElement(DefaultTabBar,_extends({},props,{__source:{fileName:_jsxFileName,lineNumber:115}}));
+return React.createElement(DefaultTabBar,_extends({},props,{__source:{fileName:_jsxFileName,lineNumber:124}}));
 }
 },
 
@@ -175,7 +184,7 @@ scrollEnabled:!this.props.locked,
 directionalLockEnabled:true,
 alwaysBounceVertical:false,
 keyboardDismissMode:"on-drag"},
-this.props.contentProps,{__source:{fileName:_jsxFileName,lineNumber:155}}),
+this.props.contentProps,{__source:{fileName:_jsxFileName,lineNumber:164}}),
 
 scenes));
 
@@ -189,12 +198,12 @@ return(
 React.createElement(SceneComponent,{
 key:child.key,
 shouldUpdated:_this4._shouldRenderSceneKey(idx,_this4.state.currentPage),
-style:{width:_this4.state.containerWidth},__source:{fileName:_jsxFileName,lineNumber:189}},
+style:{width:_this4.state.containerWidth},__source:{fileName:_jsxFileName,lineNumber:198}},
 
 _this4._keyExists(_this4.state.sceneKeys,key)?
 child:
 
-React.createElement(View,{heading:child.props.heading,__source:{fileName:_jsxFileName,lineNumber:197}})));
+React.createElement(View,{heading:child.props.heading,__source:{fileName:_jsxFileName,lineNumber:206}})));
 
 
 
@@ -296,7 +305,7 @@ this.props.tabBarPosition==="overlayTop"?"top":"bottom",0);
 }
 
 return(
-React.createElement(View,{style:[styles.container,this.props.style],onLayout:this._handleLayout,__source:{fileName:_jsxFileName,lineNumber:299}},
+React.createElement(View,{style:[styles.container,this.props.style],onLayout:this._handleLayout,__source:{fileName:_jsxFileName,lineNumber:308}},
 this.props.tabBarPosition==="top"&&this.renderTabBar(tabBarProps),
 this.renderScrollableContent(),
 (this.props.tabBarPosition==="bottom"||overlayTabs)&&this.renderTabBar(tabBarProps)));
@@ -306,11 +315,4 @@ this.renderScrollableContent(),
 
 
 ScrollableTabView;
-
-var styles=StyleSheet.create({
-container:{
-flex:1},
-
-scrollableContentAndroid:{
-flex:1}});
 //# sourceMappingURL=index.js.map
