@@ -160,10 +160,44 @@ class List extends Component {
 		);
 	}
 	render() {
+		const {
+			children: _children,
+			closeOnRowBeginSwipe: _closeOnRowBeginSwipe,
+			closeOnRowPress: _closeOnRowPress,
+			closeOnScroll: _closeOnScroll,
+			dataSource: _dataSource,
+			directionalDistanceChangeThreshold: _directionalDistanceChangeThreshold,
+			disableLeftSwipe: _disableLeftSwipe,
+			disableRightSwipe: _disableRightSwipe,
+			friction: _friction,
+			leftOpenValue: _leftOpenValue,
+			listViewRef: _listViewRef,
+			onRowClose: _onRowClose,
+			onRowDidClose: _onRowDidClose,
+			onRowDidOpen: _onRowDidOpen,
+			onRowOpen: _onRowOpen,
+			onScroll: _onScroll,
+			previewDuration: _previewDuration,
+			previewFirstRow: _previewFirstRow,
+			previewOpenValue: _previewOpenValue,
+			previewRowIndex: _previewRowIndex,
+			recalculateHiddenLayout: _recalculateHiddenLayout,
+			renderLeftHiddenRow: _renderLeftHiddenRow,
+			renderRightHiddenRow: _renderRightHiddenRow,
+			renderRow: _renderRow,
+			rightOpenValue: _rightOpenValue,
+			stopLeftSwipe: _stopLeftSwipe,
+			stopRightSwipe: _stopRightSwipe,
+			swipeRowStyle: _swipeRowStyle,
+			swipeToOpenPercent: _swipeToOpenPercent,
+			tension: _tension,
+			...passThruProps
+		} = this.props;
+
 		if (this.props.renderLeftHiddenRow || this.props.renderRightHiddenRow) {
 			return (
 				<ListView
-					{...this.props}
+					{...passThruProps}
 					ref={(ref) => {
 						this.setRefs(ref);
 						this._root = ref;
@@ -175,7 +209,7 @@ class List extends Component {
 		} else if (this.state.dataSource) {
 			return (
 				<ListView
-					{...this.props}
+					{...passThruProps}
 					ref={ref => (this._root = ref)}
 					enableEmptySections
 					dataSource={this.state.dataSource}

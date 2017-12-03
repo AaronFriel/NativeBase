@@ -3,7 +3,7 @@ var _reactNative=require('react-native');
 var _nativeBaseShoutemTheme=require('native-base-shoutem-theme');
 
 var _SwipeRow=require('./SwipeRow');
-var _mapPropsToStyleNames=require('../Utils/mapPropsToStyleNames');var _mapPropsToStyleNames2=_interopRequireDefault(_mapPropsToStyleNames);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
+var _mapPropsToStyleNames=require('../Utils/mapPropsToStyleNames');var _mapPropsToStyleNames2=_interopRequireDefault(_mapPropsToStyleNames);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 List=function(_Component){_inherits(List,_Component);
 
@@ -159,32 +159,66 @@ body:this.props.renderRow(rowData,secId,rowId,this._rows),__source:{fileName:_js
 
 
 }},{key:'render',value:function render()
-{var _this3=this;
+{var _this3=this;var _props=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this.props,_children=_props.children,_closeOnRowBeginSwipe=_props.closeOnRowBeginSwipe,_closeOnRowPress=_props.closeOnRowPress,_closeOnScroll=_props.closeOnScroll,_dataSource=_props.dataSource,_directionalDistanceChangeThreshold=_props.directionalDistanceChangeThreshold,_disableLeftSwipe=_props.disableLeftSwipe,_disableRightSwipe=_props.disableRightSwipe,_friction=_props.friction,_leftOpenValue=_props.leftOpenValue,_listViewRef=_props.listViewRef,_onRowClose=_props.onRowClose,_onRowDidClose=_props.onRowDidClose,_onRowDidOpen=_props.onRowDidOpen,_onRowOpen=_props.onRowOpen,_onScroll=_props.onScroll,_previewDuration=_props.previewDuration,_previewFirstRow=_props.previewFirstRow,_previewOpenValue=_props.previewOpenValue,_previewRowIndex=_props.previewRowIndex,_recalculateHiddenLayout=_props.recalculateHiddenLayout,_renderLeftHiddenRow=_props.renderLeftHiddenRow,_renderRightHiddenRow=_props.renderRightHiddenRow,_renderRow=_props.renderRow,_rightOpenValue=_props.rightOpenValue,_stopLeftSwipe=_props.stopLeftSwipe,_stopRightSwipe=_props.stopRightSwipe,_swipeRowStyle=_props.swipeRowStyle,_swipeToOpenPercent=_props.swipeToOpenPercent,_tension=_props.tension,passThruProps=_objectWithoutProperties(_props,['children','closeOnRowBeginSwipe','closeOnRowPress','closeOnScroll','dataSource','directionalDistanceChangeThreshold','disableLeftSwipe','disableRightSwipe','friction','leftOpenValue','listViewRef','onRowClose','onRowDidClose','onRowDidOpen','onRowOpen','onScroll','previewDuration','previewFirstRow','previewOpenValue','previewRowIndex','recalculateHiddenLayout','renderLeftHiddenRow','renderRightHiddenRow','renderRow','rightOpenValue','stopLeftSwipe','stopRightSwipe','swipeRowStyle','swipeToOpenPercent','tension']);
+
 if(this.props.renderLeftHiddenRow||this.props.renderRightHiddenRow){
 return(
 _react2.default.createElement(_reactNative.ListView,_extends({},
-this.props,{
+passThruProps,{
 ref:function ref(_ref){
 _this3.setRefs(_ref);
 _this3._root=_ref;
 },
 onScroll:function onScroll(e){return _this3.onScroll(e);},
-renderRow:function renderRow(rowData,secId,rowId){return _this3.renderRow(rowData,secId,rowId,_this3._rows);},__source:{fileName:_jsxFileName,lineNumber:165}})));
+renderRow:function renderRow(rowData,secId,rowId){return _this3.renderRow(rowData,secId,rowId,_this3._rows);},__source:{fileName:_jsxFileName,lineNumber:199}})));
 
 
 }else if(this.state.dataSource){
 return(
 _react2.default.createElement(_reactNative.ListView,_extends({},
-this.props,{
+passThruProps,{
 ref:function ref(_ref2){return _this3._root=_ref2;},
 enableEmptySections:true,
 dataSource:this.state.dataSource,
-renderRow:this.props.renderRow,__source:{fileName:_jsxFileName,lineNumber:177}})));
+renderRow:this.props.renderRow,__source:{fileName:_jsxFileName,lineNumber:211}})));
 
 
 }
 return(
-_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},this.props,{__source:{fileName:_jsxFileName,lineNumber:187}}),
+_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},this.props,{__source:{fileName:_jsxFileName,lineNumber:221}}),
 this.renderChildren()));
 
 
