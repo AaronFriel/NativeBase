@@ -4,14 +4,32 @@ var _reactNative=require("react-native");
 
 var _nativeBaseShoutemTheme=require("native-base-shoutem-theme");
 var _mapPropsToStyleNames=require("../Utils/mapPropsToStyleNames");var _mapPropsToStyleNames2=_interopRequireDefault(_mapPropsToStyleNames);
-var _platform=require("../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
+var _platform=require("../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _objectWithoutProperties(obj,keys){var target={};for(var i in obj){if(keys.indexOf(i)>=0)continue;if(!Object.prototype.hasOwnProperty.call(obj,i))continue;target[i]=obj[i];}return target;}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
 
 ListItem=function(_Component){_inherits(ListItem,_Component);function ListItem(){_classCallCheck(this,ListItem);return _possibleConstructorReturn(this,(ListItem.__proto__||Object.getPrototypeOf(ListItem)).apply(this,arguments));}_createClass(ListItem,[{key:"render",value:function render()
 
 
 
 {var _this2=this;
-var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"].variables:_platform2.default;
+var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"].variables:_platform2.default;var _props=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+this.props,_androidRippleColor=_props.androidRippleColor,_avatar=_props.avatar,_button=_props.button,_first=_props.first,_header=_props.header,_icon=_props.icon,_iconLeft=_props.iconLeft,_iconRight=_props.iconRight,_itemDivider=_props.itemDivider,_itemHeader=_props.itemHeader,_last=_props.last,_noBorder=_props.noBorder,_note=_props.note,_selected=_props.selected,passThruProps=_objectWithoutProperties(_props,["androidRippleColor","avatar","button","first","header","icon","iconLeft","iconRight","itemDivider","itemHeader","last","noBorder","note","selected"]);
 
 if(
 _reactNative.Platform.OS==="ios"||
@@ -24,9 +42,9 @@ _react2.default.createElement(_reactNative.TouchableHighlight,{
 onPress:this.props.onPress,
 onLongPress:this.props.onLongPress,
 ref:function ref(c){return _this2._root=c;},
-underlayColor:variables.listBtnUnderlayColor,__source:{fileName:_jsxFileName,lineNumber:23}},
+underlayColor:variables.listBtnUnderlayColor,__source:{fileName:_jsxFileName,lineNumber:41}},
 
-_react2.default.createElement(_reactNative.View,_extends({},this.props,{__source:{fileName:_jsxFileName,lineNumber:29}}),
+_react2.default.createElement(_reactNative.View,_extends({},passThruProps,{__source:{fileName:_jsxFileName,lineNumber:47}}),
 this.props.children)));
 
 
@@ -40,11 +58,11 @@ onLongPress:this.props.onLongPress,
 background:
 this.props.androidRippleColor?
 _reactNative.TouchableNativeFeedback.Ripple(this.props.androidRippleColor):
-_reactNative.TouchableNativeFeedback.Ripple(variables.androidRippleColorDark),__source:{fileName:_jsxFileName,lineNumber:36}},
+_reactNative.TouchableNativeFeedback.Ripple(variables.androidRippleColorDark),__source:{fileName:_jsxFileName,lineNumber:54}},
 
 
-_react2.default.createElement(_reactNative.View,{style:{marginLeft:-17,paddingLeft:17},__source:{fileName:_jsxFileName,lineNumber:46}},
-_react2.default.createElement(_reactNative.View,_extends({},this.props,{__source:{fileName:_jsxFileName,lineNumber:47}}),
+_react2.default.createElement(_reactNative.View,{style:{marginLeft:-17,paddingLeft:17},__source:{fileName:_jsxFileName,lineNumber:64}},
+_react2.default.createElement(_reactNative.View,_extends({},passThruProps,{__source:{fileName:_jsxFileName,lineNumber:65}}),
 this.props.children))));
 
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { TouchableOpacity, Platform, View, TouchableNativeFeedback } from "react-native";
 import { connectStyle } from "native-base-shoutem-theme";
+import _ from 'lodash';
 import variable from "./../theme/variables/platform";
 import { Text } from "./Text";
 import { computeProps } from "../Utils/computeProps";
@@ -30,7 +31,33 @@ class Button extends Component {
 			style: this.getInitialStyle().borderedBtn,
 		};
 
-		return computeProps(this.props, defaultProps);
+		const {
+			active: _active,
+			androidRippleColor: _androidRippleColor,
+			badge: _badge,
+			block: _block,
+			bordered: _bordered,
+			danger: _danger,
+			dark: _dark,
+			disabled: _disabled,
+			full: _full,
+			iconLeft: _iconLeft,
+			iconRight: _iconRight,
+			info: _info,
+			inputButton: _inputButton,
+			large: _large,
+			light: _light,
+			primary: _primary,
+			rounded: _rounded,
+			small: _small,
+			success: _success,
+			transparent: _transparent,
+			vertical: _vertical,
+			warning: _warning,
+      ...passThruProps
+		} = computeProps(this.props, defaultProps);
+
+		return passThruProps;
 	}
 	render() {
 		const variables = this.context.theme

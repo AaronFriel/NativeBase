@@ -13,6 +13,24 @@ class ListItem extends Component {
 	render() {
 		const variables = this.context.theme ? this.context.theme["@@shoutem.theme/themeStyle"].variables : variable;
 
+		const {
+			androidRippleColor: _androidRippleColor,
+			avatar: _avatar,
+			button: _button,
+			first: _first,
+			header: _header,
+			icon: _icon,
+			iconLeft: _iconLeft,
+			iconRight: _iconRight,
+			itemDivider: _itemDivider,
+			itemHeader: _itemHeader,
+			last: _last,
+			noBorder: _noBorder,
+			note: _note,
+			selected: _selected,
+			...passThruProps,
+		} = this.props;
+
 		if (
 			Platform.OS === "ios" ||
 			variables.androidRipple === false ||
@@ -26,7 +44,7 @@ class ListItem extends Component {
 					ref={c => (this._root = c)}
 					underlayColor={variables.listBtnUnderlayColor}
 				>
-					<View {...this.props}>
+					<View {...passThruProps}>
 						{this.props.children}
 					</View>
 				</TouchableHighlight>
@@ -44,7 +62,7 @@ class ListItem extends Component {
 					}
 				>
 					<View style={{ marginLeft: -17, paddingLeft: 17 }}>
-						<View {...this.props}>
+						<View {...passThruProps}>
 							{this.props.children}
 						</View>
 					</View>

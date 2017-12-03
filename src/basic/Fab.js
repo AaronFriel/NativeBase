@@ -1,10 +1,8 @@
-// @flow
 import React, { Component } from "react";
 import { Platform, Animated, TouchableOpacity, TouchableNativeFeedback, View } from "react-native";
 import _ from "lodash";
 import { connectStyle } from "native-base-shoutem-theme";
 import { computeProps } from "../Utils/computeProps";
-// import Button from './../Button';
 import { Button } from "./Button";
 import variables from "./../theme/variables/platform";
 import mapPropsToStyleNames from "../Utils/mapPropsToStyleNames";
@@ -381,5 +379,6 @@ class Fab extends Component {
 		);
 	}
 }
+
 const StyledFab = connectStyle("NativeBase.Fab", {}, mapPropsToStyleNames)(Fab);
 export { StyledFab as Fab };
