@@ -218,7 +218,7 @@ renderRow:this.props.renderRow,__source:{fileName:_jsxFileName,lineNumber:211}})
 
 }
 return(
-_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},this.props,{__source:{fileName:_jsxFileName,lineNumber:221}}),
+_react2.default.createElement(_reactNative.View,_extends({ref:function ref(c){return _this3._root=c;}},passThruProps,{__source:{fileName:_jsxFileName,lineNumber:221}}),
 this.renderChildren()));
 
 

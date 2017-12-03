@@ -218,7 +218,7 @@ class List extends Component {
 			);
 		}
 		return (
-			<View ref={c => (this._root = c)} {...this.props}>
+			<View ref={c => (this._root = c)} {...passThruProps}>
 				{this.renderChildren()}
 			</View>
 		);
