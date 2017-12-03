@@ -32,7 +32,7 @@ class Item extends Component {
 	componentWillReceiveProps(nextProps) {
 		const childrenArray = React.Children.toArray(nextProps.children);
 		let inputProps = {};
-		input = _.remove(childrenArray, item => {
+		let input = _.remove(childrenArray, item => {
 			if (item.type.displayName === "Styled(Input)") {
 				inputProps = item.props;
 				this.inputProps = item.props;
