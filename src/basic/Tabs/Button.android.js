@@ -11,5 +11,4 @@ const Button = props => (
     </TouchableNativeFeedback>
   );
 
-module.exports = Button;
-// export default Button;
+export default Button;

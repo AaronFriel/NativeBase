@@ -301,7 +301,6 @@ this.updateView({value:this.props.scrollValue._value});
 }});
 
 
-
 var StyledTab=(0,_nativeBaseShoutemTheme.connectStyle)("NativeBase.ScrollableTab",{},_mapPropsToStyleNames2.default)(ScrollableTabBar);exports.
 ScrollableTab=StyledTab;
 //# sourceMappingURL=ScrollableTabBar.js.map

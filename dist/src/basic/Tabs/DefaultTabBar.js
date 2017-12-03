@@ -110,7 +110,6 @@ _react2.default.createElement(_reactNative.Animated.View,{style:[tabUnderlineSty
 }});
 
 
-
 var StyledTab=(0,_nativeBaseShoutemTheme.connectStyle)("NativeBase.DefaultTabBar",{},_mapPropsToStyleNames2.default)(DefaultTabBar);exports.
 DefaultTabBar=StyledTab;
 //# sourceMappingURL=DefaultTabBar.js.map

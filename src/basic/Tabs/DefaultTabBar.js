@@ -110,6 +110,5 @@ const DefaultTabBar = createReactClass({
   },
 });
 
-// module.exports = DefaultTabBar;
 const StyledTab = connectStyle("NativeBase.DefaultTabBar", {}, mapPropsToStyleNames)(DefaultTabBar);
 export { StyledTab as DefaultTabBar };

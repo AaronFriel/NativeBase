@@ -15,5 +15,4 @@ class StaticContainer extends React.Component {
   }
 }
 
-module.exports = StaticContainer;
-// export default StaticContainer;
+export default StaticContainer;

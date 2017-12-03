@@ -7,5 +7,4 @@ const Button = props => (
     </TouchableOpacity>
   );
 
-module.exports = Button;
-// export default Button;
+export default Button;

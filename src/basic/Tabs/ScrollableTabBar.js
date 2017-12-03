@@ -301,6 +301,5 @@ const ScrollableTabBar = createReactClass({
 	},
 });
 
-// module.exports = ScrollableTabBar;
 const StyledTab = connectStyle("NativeBase.ScrollableTab", {}, mapPropsToStyleNames)(ScrollableTabBar);
 export { StyledTab as ScrollableTab };
