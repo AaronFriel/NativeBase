@@ -8,7 +8,7 @@ var _mapPropsToStyleNames=require("../../Utils/mapPropsToStyleNames");var _mapPr
 var _platform=require("./../../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);
 var _index=require("./../../index");
 var _Utils=require("../../Utils");
-var _Button=require("../Button");var _Button2=_interopRequireDefault(_Button);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _Button=require("../Button");function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 var WINDOW_WIDTH=_reactNative.Dimensions.get("window").width;
 
@@ -167,7 +167,7 @@ tabHeaderStyle)
 var headerContent=typeof name!=="string"?name.props.children:undefined;
 if(typeof name==="string"){
 return(
-_react2.default.createElement(_Button2.default,{
+_react2.default.createElement(_Button.Button,{
 key:name+"_"+page,
 onPress:function onPress(){return onPressHandler(page);},
 onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:170}},
@@ -185,7 +185,7 @@ name))));
 
 }else{
 return(
-_react2.default.createElement(_Button2.default,{
+_react2.default.createElement(_Button.Button,{
 key:_lodash2.default.random(1.2,5.2),
 onPress:function onPress(){return onPressHandler(page);},
 onLayout:onLayoutHandler,__source:{fileName:_jsxFileName,lineNumber:188}},

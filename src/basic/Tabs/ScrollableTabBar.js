@@ -8,7 +8,7 @@ import mapPropsToStyleNames from "../../Utils/mapPropsToStyleNames";
 import variable from "./../../theme/variables/platform";
 import { TabHeading, Text } from "./../../index";
 import { ViewPropTypes } from '../../Utils';
-import Button from "../Button";
+import { Button } from "../Button";
 
 const WINDOW_WIDTH = Dimensions.get("window").width;
 
