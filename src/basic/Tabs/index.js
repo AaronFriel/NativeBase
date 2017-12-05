@@ -16,7 +16,7 @@ import _ from "lodash";
 import { ViewPropTypes } from "../../Utils";
 import SceneComponent from "./SceneComponent";
 import { DefaultTabBar } from "./DefaultTabBar";
-import { ScrollableTabBar } from "./ScrollableTabBar";
+import { ScrollableTab } from "./ScrollableTabBar";
 
 const styles = StyleSheet.create({
   container: {
@@ -31,7 +31,7 @@ const ScrollableTabView = createReactClass({
   mixins: [TimerMixin],
   statics: {
     DefaultTabBar,
-    ScrollableTabBar,
+    ScrollableTab,
   },
 
   propTypes: {

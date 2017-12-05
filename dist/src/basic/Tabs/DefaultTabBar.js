@@ -9,7 +9,7 @@ var _mapPropsToStyleNames=require("../../Utils/mapPropsToStyleNames");var _mapPr
 var _platform=require("./../../theme/variables/platform");var _platform2=_interopRequireDefault(_platform);
 var _index=require("./../../index");
 var _Utils=require("../../Utils");
-var _Button=require("../Button");var _Button2=_interopRequireDefault(_Button);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
+var _Button=require("../Button");function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}
 
 var DefaultTabBar=(0,_createReactClass2.default)({displayName:"DefaultTabBar",
 propTypes:{
@@ -52,7 +52,7 @@ tabHeaderStyle)
 var headerContent=typeof name!=="string"?name.props.children:undefined;
 if(typeof name==="string"){
 return(
-_react2.default.createElement(_Button2.default,{style:{flex:1},key:name,onPress:function onPress(){return onPressHandler(page);},__source:{fileName:_jsxFileName,lineNumber:55}},
+_react2.default.createElement(_Button.Button,{style:{flex:1},key:name,onPress:function onPress(){return onPressHandler(page);},__source:{fileName:_jsxFileName,lineNumber:55}},
 _react2.default.createElement(_index.TabHeading,{style:isTabActive?activeTabStyle:tabStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:56}},
 _react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:textStyle,__source:{fileName:_jsxFileName,lineNumber:57}},name))));
 
@@ -60,7 +60,7 @@ _react2.default.createElement(_index.Text,{style:isTabActive?activeTextStyle:tex
 
 }else{
 return(
-_react2.default.createElement(_Button2.default,{style:{flex:1},key:_lodash2.default.random(1.2,5.2),onPress:function onPress(){return onPressHandler(page);},__source:{fileName:_jsxFileName,lineNumber:63}},
+_react2.default.createElement(_Button.Button,{style:{flex:1},key:_lodash2.default.random(1.2,5.2),onPress:function onPress(){return onPressHandler(page);},__source:{fileName:_jsxFileName,lineNumber:63}},
 _react2.default.createElement(_index.TabHeading,{style:tabHeaderStyle,active:isTabActive,__source:{fileName:_jsxFileName,lineNumber:64}},
 headerContent)));
 

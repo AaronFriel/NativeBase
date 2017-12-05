@@ -9,7 +9,7 @@ import mapPropsToStyleNames from "../../Utils/mapPropsToStyleNames";
 import variable from "./../../theme/variables/platform";
 import { TabHeading, Text, TabContainer } from "./../../index";
 import { ViewPropTypes } from "../../Utils";
-import Button from "../Button";
+import { Button } from "../Button";
 
 const DefaultTabBar = createReactClass({
   propTypes: {

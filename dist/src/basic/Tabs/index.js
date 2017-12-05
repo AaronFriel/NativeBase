@@ -31,7 +31,7 @@ var ScrollableTabView=(0,_createReactClass2.default)({displayName:"ScrollableTab
 mixins:[_reactTimerMixin2.default],
 statics:{
 DefaultTabBar:_DefaultTabBar.DefaultTabBar,
-ScrollableTabBar:_ScrollableTabBar.ScrollableTabBar},
+ScrollableTab:_ScrollableTabBar.ScrollableTab},
 
 
 propTypes:{
