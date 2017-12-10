@@ -32,7 +32,7 @@ var variables=this.context.theme?this.context.theme["@@shoutem.theme/themeStyle"
 this.props,_androidRippleColor=_props.androidRippleColor,_avatar=_props.avatar,_button=_props.button,_first=_props.first,_header=_props.header,_icon=_props.icon,_iconLeft=_props.iconLeft,_iconRight=_props.iconRight,_itemDivider=_props.itemDivider,_itemHeader=_props.itemHeader,_last=_props.last,_noBorder=_props.noBorder,_note=_props.note,_selected=_props.selected,passThruProps=_objectWithoutProperties(_props,["androidRippleColor","avatar","button","first","header","icon","iconLeft","iconRight","itemDivider","itemHeader","last","noBorder","note","selected"]);
 
 if(
-_reactNative.Platform.OS==="ios"||
+_reactNative.Platform.OS!=="android"||
 variables.androidRipple===false||
 !this.props.onPress&&!this.props.onLongPress||
 _reactNative.Platform.Version<=21)

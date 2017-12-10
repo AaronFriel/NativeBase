@@ -32,7 +32,7 @@ class ListItem extends Component {
 		} = this.props;
 
 		if (
-			Platform.OS === "ios" ||
+			Platform.OS !== "android" ||
 			variables.androidRipple === false ||
 			(!this.props.onPress && !this.props.onLongPress) ||
 			Platform.Version <= 21
